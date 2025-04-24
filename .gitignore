@@ -1,8 +1,25 @@
-DerivedData/
-build/
-*.xcworkspace
-*.xcodeproj/project.xcworkspace/
+### Xcode ###
+## User settings
 xcuserdata/
+
+## Xcode 8 and earlier
+*.xcscmblueprint
+*.xccheckout
+
+### Xcode Patch ###
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/project.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+/*.gcno
+**/xcshareddata/WorkspaceSettings.xcsettings
+
+## App packaging
 *.ipa
 *.dSYM.zip
 *.dSYM
+
+/build
+.DS_Store
+DerivedData/
