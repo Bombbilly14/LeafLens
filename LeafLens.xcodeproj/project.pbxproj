@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CB85902A2DBAD0290040FFBB /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CB8590292DBAD0230040FFBB /* .gitignore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		CBC67F2C2DBAC8960021EADD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB8590292DBAD0230040FFBB /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		CBC67F1E2DBAC8960021EADD /* LeafLens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeafLens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBC67F2B2DBAC8960021EADD /* LeafLensTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeafLensTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBC67F352DBAC8960021EADD /* LeafLensUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeafLensUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +80,7 @@
 		CBC67F152DBAC8960021EADD = {
 			isa = PBXGroup;
 			children = (
+				CB8590292DBAD0230040FFBB /* .gitignore */,
 				CBC67F202DBAC8960021EADD /* LeafLens */,
 				CBC67F2E2DBAC8960021EADD /* LeafLensTests */,
 				CBC67F382DBAC8960021EADD /* LeafLensUITests */,
@@ -212,6 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB85902A2DBAD0290040FFBB /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
