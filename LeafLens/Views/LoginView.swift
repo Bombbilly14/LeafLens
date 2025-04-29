@@ -142,7 +142,7 @@ struct LoginCardView: View {
             .frame(maxWidth: .infinity)
             .padding()
             .foregroundColor(.white)
-            .background(Color("SecondaryButtons"))
+            .background(Color("AppBackgroundColor"))
             .cornerRadius(10)
             .padding(.horizontal, 40)
         }
