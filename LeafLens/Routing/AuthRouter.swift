@@ -8,7 +8,7 @@
 import SwiftUI
 struct AuthRouter: View {
     @State private var authPath = NavigationPath()
-    
+    let startRoute: AuthRoute
     
     var body: some View {
         NavigationStack(path: $authPath) {
@@ -19,6 +19,14 @@ struct AuthRouter: View {
                         SignupView()
                     default:
                         EmptyView()
+                    }
+                }
+                .onAppear {
+                    switch startRoute {
+                    case .signup:
+                        authPath.append(AuthRoutes.signup)
+                    default:
+                        break
                     }
                 }
         }

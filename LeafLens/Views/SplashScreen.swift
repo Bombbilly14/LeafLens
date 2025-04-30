@@ -6,45 +6,140 @@
 //
 
 import SwiftUI
+import Supabase
 
 struct SplashScreen: View {
     @EnvironmentObject var auth: AuthService
+    let onComplete: () -> Void
+    let onLoginPressed: () -> Void
+    let onSignupPressed: () -> Void
+
+    @State private var scale: CGFloat = 1
+    @State private var overlayWhite: Double = 0
+    @State private var showButtons = false
+    @State private var hasCheckedAuth = false
+    @State private var logoOpacity: Double = 1
+    @State private var textOpacity: Double = 1
+
     var body: some View {
-        ZStack{
-            VStack(spacing: 20) {
-                Image("LeafLensLogo2")
-                    .resizable() // makes image resizable
-                    .frame(maxWidth: 225, maxHeight: 225)
-                    .scaledToFit() // maintain aspect ratio
-                    .offset(y: -70)
+        ZStack {
+            Color("BackgroundGreenApp")
+                .ignoresSafeArea()
                 
-            }
-            ZStack {
-                HStack(spacing: 0){
-                    Text("Leaf")
-                        .font(.custom("Georgia Italic", size: 45))
-                        .foregroundColor(Color(.white))
-                    Text("Lens")
-                        .font(.custom("Georgia Italic", size: 45))
-                        .foregroundColor(Color("Text"))
-                    
-                }
-                .offset(y: 35)
-                
-            }
             
+            Color.white
+                    .opacity(overlayWhite)
+                    .ignoresSafeArea()
+            
+            Image("LeafLensLogoVector2")
+                .resizable()
+                .scaledToFit()
+                .foregroundColor(.white)
+                .frame(maxWidth: 150, maxHeight: 150)
+                .offset(y: -120)
+                .scaleEffect(scale, anchor: UnitPoint(x: 0.5, y: -0.4))
+                .opacity(logoOpacity)
+                .animation(.easeInOut(duration: 1.0), value: logoOpacity)
+                .animation(.easeIn(duration: 1.0), value: scale)
+                .zIndex(100)
+
+            HStack(spacing: 0) {
+                Text("Leaf")
+                    .font(.custom("Georgia Italic", size: 45))
+                    .foregroundColor(.white)
+                Text("Lens")
+                    .font(.custom("Georgia Italic", size: 45))
+                    .foregroundColor(Color("Text"))
+            }
+            .offset(y: -20)
+            .opacity(textOpacity)
+            .animation(.easeInOut(duration: 1.0), value: textOpacity)
+
             Text("Snap. Identify. Care.")
                 .font(.custom("Georgia Italic", size: 20))
-                    .foregroundColor(.white)
-                    .offset(y: 85)
-            
+                .foregroundColor(.white)
+                .offset(y: 30)
+                .opacity(textOpacity)
+                .animation(.easeInOut(duration: 1.0), value: textOpacity)
+
+            if showButtons {
+                HStack(spacing: 16) {
+                    Button(action: {
+                        onLoginPressed()
+                    }) {
+                        Text("Login")
+                            .bold()
+                            .frame(width: 125, height: 15)
+                            .padding()
+                            .foregroundColor(Color(.white))
+                            .background(Color("Text"))
+                            .cornerRadius(10)
+                        
+                    }
+
+                    Button(action: {
+                        onSignupPressed()
+                    }) {
+                        Text("Sign Up")
+                            .bold()
+                            .frame(width: 125, height: 15)
+                            .padding()
+                            .foregroundColor(Color(.white))
+                            .background(Color("SecondaryButtons"))
+                            .cornerRadius(10)
+                        
+                    }
+                }
+                .transition(.move(edge: .bottom).combined(with: .opacity))
+                .offset(y: 275)
+            }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color("AppBackgroundColor"))
-        .ignoresSafeArea()
+        .onReceive(auth.$isLoading) { loading in
+            guard !loading, !hasCheckedAuth else { return }
+            hasCheckedAuth = true
+
+            if auth.isLoggedIn {
+                scale = 20
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                    withAnimation(.easeInOut(duration: 0.6)) {
+                        logoOpacity = 0
+                        textOpacity = 0
+                        overlayWhite = 1
+                    }
+                }
+
+                // once splash animation is finished, trigger showSplash as false in parent
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                    onComplete()
+                }
+            } else {
+                withAnimation(.easeOut(duration: 1.2).delay(1.5)) {
+                    showButtons = true
+                }
+            }
+        }
     }
 }
 
+
+
+
+
 #Preview {
-    SplashScreen()
+    let previewClient = SupabaseClient(
+        supabaseURL: URL(string: "https://orcmlvodylvfdqawtjof.supabase.co")!,
+        supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9yY21sdm9keWx2ZmRxYXd0am9mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU1MjI0ODksImV4cCI6MjA2MTA5ODQ4OX0.w834Zc-5zfo8UP57Ev6-YPNxSgiab6Uvv-S1TChXCSg"
+      )
+        let authService = AuthService(client: previewClient)
+    
+    SplashScreen(
+        onComplete: {
+        },
+        onLoginPressed: {
+        },
+        onSignupPressed: {
+        }
+    )
+        .environmentObject(authService)
 }
