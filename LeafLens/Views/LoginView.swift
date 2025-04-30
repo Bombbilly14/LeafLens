@@ -21,7 +21,7 @@ struct LoginView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         
         .background(
-            Color("AppBackground")
+            Color("TestColor4")
                 .ignoresSafeArea()
                 .dismissKeyboardOnTap()
         )
@@ -105,26 +105,28 @@ struct LoginCardView: View {
             }) {
                 Text("Login")
                     .frame(maxWidth: .infinity)
+                    .bold()
                     .padding()
-                    .foregroundColor(.white)
-                    .background(Color("PrimaryButtons"))
+                    .foregroundColor(Color(.white))
+                    .background(Color("BackgroundGreenApp"))
                     .cornerRadius(10)
                 
             }
         }
         .padding()
         .frame(maxWidth: 350)
-        .background(Color("AppCard"))
+        .background(Color("TestColor5"))
         .cornerRadius(20)
-        .shadow(radius: 5)
+        .shadow(radius: 2)
         .padding()
         
         HStack {
             Text("Don't have an account?")
+                .foregroundColor(.white)
             Button("Sign Up") {
                 path.append(AuthRoutes.signup)
             }
-            .foregroundColor(.blue)
+            .foregroundColor(Color("Text"))
         }
         HStack {
             Button("login me") {
@@ -140,9 +142,10 @@ struct LoginCardView: View {
 
             }
             .frame(maxWidth: .infinity)
+            .bold()
             .padding()
             .foregroundColor(.white)
-            .background(Color("AppBackgroundColor"))
+            .background(Color("SecondaryButtons"))
             .cornerRadius(10)
             .padding(.horizontal, 40)
         }
@@ -150,10 +153,13 @@ struct LoginCardView: View {
 }
 struct LoginLogoView: View {
     var body: some View {
-        VStack {
-            Text("LeafLens")
-                .font(.largeTitle)
-                .bold()
+        HStack(spacing: 0) {
+            Text("Leaf")
+                .font(.custom("Georgia Italic", size: 45))
+                .foregroundColor(.white)
+            Text("Lens")
+                .font(.custom("Georgia Italic", size: 45))
+                .foregroundColor(Color("Text"))
         }
     }
 }
