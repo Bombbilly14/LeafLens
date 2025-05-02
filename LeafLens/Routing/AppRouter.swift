@@ -16,41 +16,50 @@ struct AppRouter: View {
     
     
     var body: some View {
-        TabView(selection: $selectedTab) {
-            NavigationStack(path: $homePath) {
-                HomeView(path: $homePath)
-                    .navigationDestination(for: HomeRoutes.self) { screen in
-                        switch screen {
-                        case .placeholder:
-                            HomePlaceholderView()
-                        default:
-                            EmptyView()
-                        }
+        ZStack(alignment: .bottom) {
+            Group {
+                switch selectedTab {
+                case .home:
+                    NavigationStack(path: $homePath) {
+                        HomeView(path: $homePath)
+                            .navigationDestination(for: HomeRoutes.self) { screen in
+                                switch screen {
+                                case .placeholder:
+                                    HomePlaceholderView()
+                                default:
+                                    EmptyView()
+                                }
+                            }
+                            .toolbar(homePath.isEmpty ? .visible : .hidden, for: .tabBar)
                     }
-                    .toolbar(homePath.isEmpty ? .visible : .hidden, for: .tabBar)
-            }
-            .tag(Tab.home)
-            .tabItem { Label("Home", systemImage: "house")}
-            
-            NavigationStack {
-                PlaceholderView()
-            }
-            .tabItem { Label("Placeholder", systemImage: "plus") }
-            
-            NavigationStack(path: $settingsPath) {
-                SettingsView(path: $settingsPath)
-                    .navigationDestination(for: SettingsRoutes.self) { screen in
-                        switch screen {
-                        case .profile:
-                            ProfileView()
-                        case .manageAccount:
-                            PlaceholderView()
-                        }
+                case .placeholder:
+                    NavigationStack {
+                        PlaceholderView()
                     }
-                    .toolbar(settingsPath.isEmpty ? .visible : .hidden, for: .tabBar)
+                case .settings:
+                    NavigationStack(path: $settingsPath) {
+                        SettingsView(path: $settingsPath)
+                            .navigationDestination(for: SettingsRoutes.self) { screen in
+                                switch screen {
+                                case .profile:
+                                    ProfileView()
+                                case .manageAccount:
+                                    PlaceholderView()
+                                }
+                            }
+                            .toolbar(settingsPath.isEmpty ? .visible : .hidden, for: .tabBar)
+                    }
+                    
+                    
+                }
             }
-            .tag(Tab.settings)
-            .tabItem { Label("Settings", systemImage: "gear") }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            BottomNavBar(selectedTab: $selectedTab)
         }
+        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
+}
+
+#Preview {
+    AppRouter()
 }

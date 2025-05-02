@@ -25,7 +25,7 @@ struct PlantCard: View {
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 15)
-                .fill(Color("Card"))
+                .fill(Color("Card2"))
                 .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 4)
         )
     }

@@ -23,7 +23,10 @@ struct SplashScreen: View {
 
     var body: some View {
         ZStack {
-            Color("BackgroundGreenApp")
+            LinearGradient(gradient: Gradient(colors: [Color("GradientGreenBright"),
+//                Color("GradientDarkGreen1"),
+               Color("BackgroundGreenApp")]), startPoint: .topTrailing, endPoint: .bottomLeading)
+                        .edgesIgnoringSafeArea(.all)
                 .ignoresSafeArea()
                 
             
@@ -68,27 +71,29 @@ struct SplashScreen: View {
                         onLoginPressed()
                     }) {
                         Text("Login")
-                            .bold()
+                            .font(.system(size: 20))
                             .frame(width: 125, height: 15)
                             .padding()
-                            .foregroundColor(Color(.white))
-                            .background(Color("Text"))
-                            .cornerRadius(10)
+                            .foregroundColor(Color("BackgroundGreenApp"))
+                            .background(Color(.white))
+                            .cornerRadius(25)
                         
                     }
+//                    .shadow(color: .gray, radius: 2)
 
                     Button(action: {
                         onSignupPressed()
                     }) {
-                        Text("Sign Up")
-                            .bold()
+                        Text("Sign up")
+                            .font(.system(size: 18))
                             .frame(width: 125, height: 15)
                             .padding()
                             .foregroundColor(Color(.white))
-                            .background(Color("SecondaryButtons"))
-                            .cornerRadius(10)
+                            .background(Color("TestAccentColor5"))
+                            .cornerRadius(25)
                         
                     }
+//                    .shadow(color: Color(.black), radius: 1)
                 }
                 .transition(.move(edge: .bottom).combined(with: .opacity))
                 .offset(y: 275)
