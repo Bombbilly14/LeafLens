@@ -38,14 +38,14 @@
                                                         <attributes>
                                                             <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <font key="NSFont" size="45" name="Georgia-Italic"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" headIndent="7" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment content="Lens">
                                                         <attributes>
                                                             <color key="NSColor" red="0.43323126439999998" green="0.8333540559" blue="0.56524848940000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <font key="NSFont" size="45" name="Georgia-Italic"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" headIndent="7" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
                                                 </attributedString>
@@ -57,7 +57,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
-                        <color key="backgroundColor" name="DarkGreenBackground"/>
+                        <color key="backgroundColor" name="BackgroundGreenApp"/>
                         <constraints>
                             <constraint firstItem="b8V-AT-1nM" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerXWithinMargins" id="Fea-Ef-gSX"/>
                             <constraint firstItem="b8V-AT-1nM" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerYWithinMargins" constant="-94" id="PSs-99-qV4"/>
@@ -71,11 +71,11 @@
     </scenes>
     <resources>
         <image name="LeafLensLogoVector2" width="452" height="656"/>
-        <namedColor name="DarkGreenBackground">
-            <color red="0.23100000000000001" green="0.40400000000000003" blue="0.219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="BackgroundGreenApp">
+            <color red="0.20200000000000001" green="0.41282230615615845" blue="0.34544879198074341" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Text">
-            <color red="0.53333333333333333" green="0.82352941176470584" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.43224281072616577" green="0.83297592401504517" blue="0.56522339582443237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

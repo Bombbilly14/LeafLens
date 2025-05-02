@@ -29,7 +29,7 @@ struct HomeView: View {
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color("Background"))
+        .background(Color("Card3")) // or card 2? 
         .ignoresSafeArea()
     }
 }
