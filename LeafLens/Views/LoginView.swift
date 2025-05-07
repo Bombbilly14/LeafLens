@@ -13,19 +13,18 @@ struct LoginView: View {
     
     @State private var showToast: Bool = false
     @Binding var path: NavigationPath
+    
     var body: some View {
         VStack {
-//            LoginLogoView()
             LoginCardView(showToast: $showToast, path: $path)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         
         .background(
-            LinearGradient(gradient: Gradient(colors: [Color("GradientGreenBright"),
-//                Color("BackgroundGreenApp"),
-               Color("BackgroundGreenApp")]), startPoint: .top, endPoint: .bottom)
-                        .edgesIgnoringSafeArea(.all)
+            Image("plantBackground")
+                .resizable()
                 .ignoresSafeArea()
+                .overlay(Color.black.opacity(0.6))
                 .dismissKeyboardOnTap()
         )
         .showToast(
@@ -119,9 +118,9 @@ struct LoginCardView: View {
                 .padding()
                 .frame(maxHeight: 50)
                 .overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color("BackgroundGreenApp"), lineWidth: 1)
-                            )
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color("BackgroundGreenApp"), lineWidth: 1)
+                        )
                 .onTapGesture {
                     isFocused = .password
                 }
@@ -134,7 +133,6 @@ struct LoginCardView: View {
                         Task {
                             do {
                                 try await auth.signIn(email: email, password: password)
-                                print("logged in")
                             } catch {
                                 print("error, \(error)")
                                 self.error = error
@@ -206,7 +204,7 @@ struct LoginCardView: View {
             }
             .padding()
             .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height * 0.7)
-            .background(Color("Card3"))
+            .background(Color("Card2"))
             .cornerRadius(40)
         }
         .ignoresSafeArea()
@@ -228,7 +226,6 @@ struct LoginLogoView: View {
                     .font(.custom("Georgia Italic", size: 45))
                     .foregroundColor(Color("Text"))
             }
-            .frame(maxWidth: .infinity)
         }
     }
 }

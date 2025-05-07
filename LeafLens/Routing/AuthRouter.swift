@@ -21,14 +21,6 @@ struct AuthRouter: View {
                         EmptyView()
                     }
                 }
-                .onAppear {
-                    switch startRoute {
-                    case .signup:
-                        authPath.append(AuthRoutes.signup)
-                    default:
-                        break
-                    }
-                }
         }
     }
 }

@@ -7,10 +7,11 @@
 import SwiftUI
 
 struct AppRouter: View {
-    enum Tab {case home, settings, placeholder}
+    enum Tab {case home, settings, identify, myGarden, calendar}
     
     @State private var selectedTab: Tab = .home
     @State private var homePath = NavigationPath()
+    @State private var myGardenPath = NavigationPath()
     @State private var settingsPath = NavigationPath()
     @State private var placeholderPath = NavigationPath()
     
@@ -32,10 +33,22 @@ struct AppRouter: View {
                             }
                             .toolbar(homePath.isEmpty ? .visible : .hidden, for: .tabBar)
                     }
-                case .placeholder:
+                case .myGarden:
+                    
+                    NavigationStack(path: $myGardenPath) {
+                        MyGarden(path: $myGardenPath)
+                    }
+                    
+                case .calendar:
                     NavigationStack {
                         PlaceholderView()
                     }
+                case .identify:
+                    NavigationStack {
+                        IdentifyYourPlant()
+                    }
+                    
+                    
                 case .settings:
                     NavigationStack(path: $settingsPath) {
                         SettingsView(path: $settingsPath)
