@@ -5,9 +5,9 @@
         "color-space" : "srgb",
         "components" : {
           "alpha" : "1.000",
-          "blue" : "0x3C",
-          "green" : "0x48",
-          "red" : "0x23"
+          "blue" : "0x58",
+          "green" : "0x69",
+          "red" : "0x33"
         }
       },
       "display-gamut" : "sRGB",
@@ -18,9 +18,9 @@
         "color-space" : "display-p3",
         "components" : {
           "alpha" : "1.000",
-          "blue" : "0x3C",
-          "green" : "0x48",
-          "red" : "0x23"
+          "blue" : "0.349",
+          "green" : "0.408",
+          "red" : "0.255"
         }
       },
       "display-gamut" : "display-P3",

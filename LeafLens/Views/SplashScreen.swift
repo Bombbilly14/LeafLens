@@ -23,12 +23,13 @@ struct SplashScreen: View {
 
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color("GradientGreenBright"),
-//                Color("GradientDarkGreen1"),
-               Color("BackgroundGreenApp")]), startPoint: .topTrailing, endPoint: .bottomLeading)
-                        .edgesIgnoringSafeArea(.all)
+            Image("plantBackground")
+                .resizable()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .ignoresSafeArea(edges: .vertical)
+            Color.black
+                .opacity(0.6)
                 .ignoresSafeArea()
-                
             
             Color.white
                     .opacity(overlayWhite)
@@ -66,34 +67,25 @@ struct SplashScreen: View {
                 .animation(.easeInOut(duration: 1.0), value: textOpacity)
 
             if showButtons {
-                HStack(spacing: 16) {
-                    Button(action: {
-                        onLoginPressed()
-                    }) {
-                        Text("Login")
-                            .font(.system(size: 20))
-                            .frame(width: 125, height: 15)
-                            .padding()
-                            .foregroundColor(Color("BackgroundGreenApp"))
-                            .background(Color(.white))
-                            .cornerRadius(25)
-                        
-                    }
-//                    .shadow(color: .gray, radius: 2)
-
+                HStack() {
+                    Spacer()
+                    
                     Button(action: {
                         onSignupPressed()
                     }) {
-                        Text("Sign up")
+                        Text("Get Started")
                             .font(.system(size: 18))
-                            .frame(width: 125, height: 15)
+                            .frame(width: 150, height: 18)
                             .padding()
                             .foregroundColor(Color(.white))
-                            .background(Color("TestAccentColor5"))
+                            .background(Color("BackgroundGreenApp"))
                             .cornerRadius(25)
+                            .padding(.trailing, 20)
+                        
                         
                     }
-//                    .shadow(color: Color(.black), radius: 1)
+                    .shadow(color: Color.black.opacity(0.3),
+                       radius: 4, x: 4, y: 4)
                 }
                 .transition(.move(edge: .bottom).combined(with: .opacity))
                 .offset(y: 275)
