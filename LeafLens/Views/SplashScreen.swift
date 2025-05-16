@@ -16,103 +16,107 @@ struct SplashScreen: View {
 
     @State private var scale: CGFloat = 1
     @State private var overlayWhite: Double = 0
-    @State private var showButtons = false
+    @State private var showButtons = true
     @State private var hasCheckedAuth = false
     @State private var logoOpacity: Double = 1
     @State private var textOpacity: Double = 1
 
     var body: some View {
-        ZStack {
-            Image("plantBackground")
-                .resizable()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .ignoresSafeArea(edges: .vertical)
-            Color.black
-                .opacity(0.6)
-                .ignoresSafeArea()
-            
-            Color.white
+        GeometryReader { geometry in
+            ZStack {
+                Image("plantBackground18")
+                    .resizable()
+                    .scaledToFill()
+//                    .scaleEffect(x: -1, y: 1) //flip image if needed
+                    .frame(width: geometry.size.width)
+                    .ignoresSafeArea(edges: .vertical)
+                Color.black
+                    .opacity(0.6)
+                    .ignoresSafeArea()
+                
+                Color.white
                     .opacity(overlayWhite)
                     .ignoresSafeArea()
-            
-            Image("LeafLensLogoVector2")
-                .resizable()
-                .scaledToFit()
-                .foregroundColor(.white)
-                .frame(maxWidth: 150, maxHeight: 150)
-                .offset(y: -120)
-                .scaleEffect(scale, anchor: UnitPoint(x: 0.5, y: -0.4))
-                .opacity(logoOpacity)
-                .animation(.easeInOut(duration: 1.0), value: logoOpacity)
-                .animation(.easeIn(duration: 1.0), value: scale)
-                .zIndex(100)
-
-            HStack(spacing: 0) {
-                Text("Leaf")
-                    .font(.custom("Georgia Italic", size: 45))
+                
+                Image("LeafLensLogoVector2")
+                    .resizable()
+                    .scaledToFit()
                     .foregroundColor(.white)
-                Text("Lens")
-                    .font(.custom("Georgia Italic", size: 45))
-                    .foregroundColor(Color("Text"))
-            }
-            .offset(y: -20)
-            .opacity(textOpacity)
-            .animation(.easeInOut(duration: 1.0), value: textOpacity)
-
-            Text("Snap. Identify. Care.")
-                .font(.custom("Georgia Italic", size: 20))
-                .foregroundColor(.white)
-                .offset(y: 30)
+                    .frame(maxWidth: 150, maxHeight: 150)
+                    .offset(y: -120)
+                    .scaleEffect(scale, anchor: UnitPoint(x: 0.5, y: -0.4))
+                    .opacity(logoOpacity)
+                    .animation(.easeInOut(duration: 1.0), value: logoOpacity)
+                    .animation(.easeIn(duration: 1.0), value: scale)
+                    .zIndex(100)
+                
+                HStack(spacing: 0) {
+                    Text("Leaf")
+                        .font(.custom("Georgia Italic", size: 45))
+                        .foregroundColor(.white)
+                    Text("Lens")
+                        .font(.custom("Georgia Italic", size: 45))
+                        .foregroundColor(Color("Text"))
+                }
+                .offset(y: -20)
                 .opacity(textOpacity)
                 .animation(.easeInOut(duration: 1.0), value: textOpacity)
-
-            if showButtons {
-                HStack() {
-                    Spacer()
-                    
-                    Button(action: {
-                        onSignupPressed()
-                    }) {
-                        Text("Get Started")
-                            .font(.system(size: 18))
-                            .frame(width: 150, height: 18)
-                            .padding()
-                            .foregroundColor(Color(.white))
-                            .background(Color("BackgroundGreenApp"))
-                            .cornerRadius(25)
-                            .padding(.trailing, 20)
+                
+                Text("Snap. Identify. Care.")
+                    .font(.custom("Georgia Italic", size: 20))
+                    .foregroundColor(.white)
+                    .offset(y: 30)
+                    .opacity(textOpacity)
+                    .animation(.easeInOut(duration: 1.0), value: textOpacity)
+                
+                if showButtons {
+                    HStack() {
+                        Spacer()
                         
-                        
+                        Button(action: {
+                            onSignupPressed()
+                        }) {
+                            Text("Get Started")
+                                .font(.system(size: 18))
+                                .frame(width: 150, height: 18)
+                                .padding()
+                                .foregroundColor(Color(.white))
+                                .background(Color("BackgroundGreenApp"))
+                                .cornerRadius(25)
+                                .padding(.trailing, 20)
+                            
+                            
+                        }
+                        .shadow(color: Color.black.opacity(0.3),
+                                radius: 4, x: 4, y: 4)
                     }
-                    .shadow(color: Color.black.opacity(0.3),
-                       radius: 4, x: 4, y: 4)
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+                    .offset(y: 275)
                 }
-                .transition(.move(edge: .bottom).combined(with: .opacity))
-                .offset(y: 275)
             }
-        }
-        .onReceive(auth.$isLoading) { loading in
-            guard !loading, !hasCheckedAuth else { return }
-            hasCheckedAuth = true
-
-            if auth.isLoggedIn {
-                scale = 20
-
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                    withAnimation(.easeInOut(duration: 0.6)) {
-                        logoOpacity = 0
-                        textOpacity = 0
-                        overlayWhite = 1
+            .onReceive(auth.$isLoading) { loading in
+                guard !loading, !hasCheckedAuth else { return }
+                hasCheckedAuth = true
+                
+                if auth.isLoggedIn {
+                    scale = 20
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                        withAnimation(.easeInOut(duration: 0.6)) {
+                            logoOpacity = 0
+                            textOpacity = 0
+                            overlayWhite = 1
+                        }
                     }
-                }
-
-                // once splash animation is finished, trigger showSplash as false in parent
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                    onComplete()
-                }
-            } else {
-                withAnimation(.easeOut(duration: 1.2).delay(1.5)) {
-                    showButtons = true
+                    
+                    // once splash animation is finished, trigger showSplash as false in parent
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                        onComplete()
+                    }
+                } else {
+                    withAnimation(.easeOut(duration: 1.2).delay(1.5)) {
+                        showButtons = true
+                    }
                 }
             }
         }

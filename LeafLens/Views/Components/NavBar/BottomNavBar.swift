@@ -30,7 +30,8 @@ struct BottomNavBar: View {
             .background(
                 Color("BackgroundGreenApp")
                     .clipShape(Capsule())
-                    .shadow(radius: 2)
+                    .shadow(color: Color.black.opacity(0.3),
+                            radius: 5, x: 0, y: 4)
             )
             .padding(.horizontal)
             .frame(maxWidth: .infinity, alignment: .bottom)
@@ -44,9 +45,13 @@ struct BottomNavBar: View {
                         Circle()
                             .fill(selectedTab == .identify ? Color("TestAccentColor3") : Color(.white))
                             .matchedGeometryEffect(id: "tabHighlight", in: highlightNamespace)
+                            .shadow(color: Color.black.opacity(0.04), radius: 8, x: 0, y: 0)
+                            .shadow(color: Color.black.opacity(0.4), radius: 2, x: 0, y: 4)
                     } else {
                         Circle()
                             .fill(Color(.white))
+                            .shadow(color: Color.black.opacity(0.3),
+                                        radius: 4, x: 0, y: 4)
                     }
                     
                     Image("LeafLensLogoVector2")
@@ -62,11 +67,6 @@ struct BottomNavBar: View {
                         .frame(width: 50, height: 50)
                         .drawingGroup()
                 }
-                .shadow(color: Color.black.opacity(0.08),
-                            radius: 10, x: 0, y: 0)
-                .shadow(color: Color.black.opacity(0.3),
-                            radius: 6, x: 0, y: 4)
-                
             }
             .offset(y: selectedTab == .identify ? -20 : 0)
         }
@@ -101,8 +101,8 @@ struct BottomNavBar: View {
                     Circle()
                       .fill(Color("TestAccentColor3"))
                       .matchedGeometryEffect(id: "tabHighlight", in: highlightNamespace)
-                      .shadow(color: Color.black.opacity(0.04), radius: 8, x: 0, y: 0)
-                      .shadow(color: Color.black.opacity(0.10), radius: 4, x: 0, y: -2)
+                      .shadow(color: Color.black.opacity(0.04), radius: 8, x: 0, y: 4)
+                      .shadow(color: Color.black.opacity(0.4), radius: 2, x: 0, y: 4)
                   }
                 }
                     .offset(y: selectedTab == tab ? -20 : 0)
@@ -112,7 +112,7 @@ struct BottomNavBar: View {
 }
 
 #Preview {
-    BottomNavBar(selectedTab: .constant(.home))
+    BottomNavBar(selectedTab: .constant(.identify))
 }
 
 // camera corner lines

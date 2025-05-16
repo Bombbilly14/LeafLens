@@ -26,6 +26,7 @@ struct LeafLensApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(authService)
+                .environment(\.font, .custom("Inter-Regular", size: 16))
         }
     }
 }

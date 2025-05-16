@@ -8,6 +8,7 @@
 // login view, sign user in with supabase and navigate home
 
 import SwiftUI
+import _AuthenticationServices_SwiftUI
 
 struct LoginView: View {
     
@@ -15,25 +16,29 @@ struct LoginView: View {
     @Binding var path: NavigationPath
     
     var body: some View {
-        VStack {
-            LoginCardView(showToast: $showToast, path: $path)
+        GeometryReader { geometry in
+            VStack {
+                LoginCardView(showToast: $showToast, path: $path)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
+            .background(
+                Image("plantBackground18")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: geometry.size.width)
+                    .ignoresSafeArea(edges: .vertical)
+                    .overlay(Color.black.opacity(0.6))
+                    .dismissKeyboardOnTap()
+            )
+            .showToast(
+                isPresented: $showToast,
+                message: "Email and password must not be empty!",
+                backgroundColor: .red,
+                textColor: .white,
+                duration: 3
+            )
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        
-        .background(
-            Image("plantBackground")
-                .resizable()
-                .ignoresSafeArea()
-                .overlay(Color.black.opacity(0.6))
-                .dismissKeyboardOnTap()
-        )
-        .showToast(
-            isPresented: $showToast,
-            message: "Email and password must not be empty!",
-            backgroundColor: .red,
-            textColor: .white,
-            duration: 3
-        )
     }
 }
 
@@ -58,22 +63,33 @@ struct LoginCardView: View {
         VStack {
             Spacer()
             LoginLogoView()
-            VStack {
-                // google + apple sign in here
+            VStack(spacing: 10) {
                 Spacer()
-                HStack(spacing: 0) {
-                    Image(systemName: "person.crop.circle.fill")
-                        .resizable()
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("Welcome back")
+                        .font(.system(size: 24))
+                    Text("Log in to continue")
+                        .font(.system(size: 14))
+                        .foregroundColor(.gray)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
+                .padding(.vertical, 25)
+                .padding(.top, 10)
+                VStack(spacing: 25) {
+                    HStack(spacing: 0) {
+                        Image(systemName: "person.crop.circle.fill")
+                            .resizable()
                             .scaledToFit()
                             .frame(width: 18, height: 18)
-                        .foregroundColor(Color("BackgroundGreenApp"))
-                    TextField(text: $email) {
-                        Text("Email")
-                            .bold()
-                            .font(.system(size: 14))
-
                             .foregroundColor(Color("BackgroundGreenApp"))
-                    }
+                        TextField(text: $email) {
+                            Text("Email")
+                                .bold()
+                                .font(.system(size: 14))
+                            
+                                .foregroundColor(Color("BackgroundGreenApp"))
+                        }
                         .keyboardType(.emailAddress)
                         .textInputAutocapitalization(.never)
                         
@@ -81,20 +97,19 @@ struct LoginCardView: View {
                         .frame(maxHeight: 50)
                         .focused($isFocused, equals: .email)
                         .cornerRadius(10)
+                        
+                        
+                    }
                     
-                    
-                }
-                
-                .padding()
-                .frame(maxHeight: 50)
-                .overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color("BackgroundGreenApp"), lineWidth: 1)
-                            )
-                .onTapGesture {
-                    isFocused = .email
-                }
-                .padding()
+                    .padding()
+                    .frame(maxHeight: 50)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color("BackgroundGreenApp"), lineWidth: 1))
+                    .onTapGesture {
+                        isFocused = .email
+                    }
+                    .padding(.horizontal)
                 
                 
                 HStack(spacing: 0) {
@@ -124,7 +139,21 @@ struct LoginCardView: View {
                 .onTapGesture {
                     isFocused = .password
                 }
-                .padding()
+                .padding(.horizontal)
+                }
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        // navigate here
+                    }) {
+                        Text("Forgot Password")
+                            .padding(.horizontal)
+                        
+                            .foregroundColor(Color("BackgroundGreenApp"))
+                            .font(.system(size: 14))
+                    }
+                    .padding(.vertical, 10)
+                }
                 Spacer()
                 Button(action: {
                     if email.isEmpty || password.isEmpty {
@@ -140,8 +169,8 @@ struct LoginCardView: View {
                         }
                     }
                 }) {
-                    Text("Login")
-                        .frame(maxWidth: .infinity, maxHeight: 50)
+                    Text("Log in")
+                        .frame(maxWidth: .infinity, minHeight: 50)
                         .bold()
                         .foregroundColor(Color(.white))
                         .background(
@@ -150,11 +179,55 @@ struct LoginCardView: View {
                         )
                         .cornerRadius(25)
                         .padding(.horizontal)
+                        .padding(.vertical, 5)
+//                        .padding(.vertical)
+                        .shadow(color: .black.opacity(0.4), radius: 4, x: 0, y: 4)
                 }
-                VStack {
+                HStack{
+                    Rectangle()
+                        .frame(height: 1)
+                        .foregroundColor(.gray)
+                        .opacity(0.5)
+                    Text("or log in with")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                        .padding(.horizontal, 2)
+                    Rectangle()
+                        .frame(height: 1)
+                        .foregroundColor(.gray)
+                        .opacity(0.5)
+                }
+                .padding(.top)
+                HStack{
+                    Image("GoogleLogoBlack")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 44, height: 44)
+                        .overlay(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .stroke(Color.black, lineWidth: 2)
+                            )
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .shadow(color: .black.opacity(0.3), radius: 4, x: 0, y: 6)
+                        .padding()
+                    
+                    Image("AppleLogoBlack")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 44, height: 44)
+                        .background(.black)
+                        .clipShape(
+                            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            )
+                        .shadow(color: .black.opacity(0.3), radius: 4, x: 0, y: 6)
+                        .padding()
+                        
+                }
+                Spacer()
+                VStack() {
                     HStack {
                         Text("Don't have an account?")
-                            .foregroundColor(.gray)
+                            .foregroundStyle(.gray)
                             .font(.system(size: 14))
                         
                         Button(action: {
@@ -170,12 +243,13 @@ struct LoginCardView: View {
                                     )
                                     .foregroundColor(Color("BackgroundGreenApp"))
                                     .font(.system(size: 14))
-                                    .bold()
+//                                    .bold()
                                     
                                 
+                                    .padding(.vertical)
                                }
                     }
-                    .padding(.vertical, 20)
+                    .padding(.bottom, 20)
                     HStack {
                         Button("login me") {
                             Task {
@@ -198,8 +272,9 @@ struct LoginCardView: View {
                         .cornerRadius(10)
                         .padding(.horizontal, 40)
                     }
-                    .padding(.bottom, 20)
+                    .padding(.bottom, 100)
                 }
+                .frame(maxWidth: .infinity, alignment: .bottom)
                 
             }
             .padding()
@@ -207,7 +282,7 @@ struct LoginCardView: View {
             .background(Color("Card2"))
             .cornerRadius(40)
         }
-        .ignoresSafeArea()
+        .ignoresSafeArea(.container)
     }
 }
 struct LoginLogoView: View {

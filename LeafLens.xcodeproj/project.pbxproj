@@ -36,7 +36,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		CBA877B52DC2C76900AF4BED /* Exceptions for "LeafLens" folder in "LeafLens" target */ = {
+		CBAC584B2DCD386E00BEAACB /* Exceptions for "LeafLens" folder in "LeafLens" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -49,7 +49,7 @@
 		CBC67F202DBAC8960021EADD /* LeafLens */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				CBA877B52DC2C76900AF4BED /* Exceptions for "LeafLens" folder in "LeafLens" target */,
+				CBAC584B2DCD386E00BEAACB /* Exceptions for "LeafLens" folder in "LeafLens" target */,
 			);
 			path = LeafLens;
 			sourceTree = "<group>";

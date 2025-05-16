@@ -9,11 +9,20 @@ import SwiftUI
 
 struct IdentifyYourPlant: View {
     
+    @StateObject private var classifier = PlantIdentifier()
+    @State private var pickedImage: UIImage?
+    @State private var isShowingImagePicker: Bool = false
+    @State private var pickerSource: ImagePicker.SourceType = .photoLibrary
+    
     private func snapPhoto() {
         print("snap a photo presssed")
+        pickerSource = .camera
+        isShowingImagePicker = true
     }
     private func uploadImage() {
         print("uploadImage presssed")
+        pickerSource = .photoLibrary
+        isShowingImagePicker = true
     }
     
     var body: some View {
@@ -29,6 +38,14 @@ struct IdentifyYourPlant: View {
                 .font(.title)
             Text("Snap or upload a photo to get started")
                 .font(.subheadline)
+            
+            if !classifier.label.isEmpty {
+                                Text("Prediction: \(classifier.label)")
+                                    .font(.headline)
+                                Text(String(format: "Confidence: %.1f%%", classifier.confidence * 100))
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                            }
             
             HStack {
                 Button(action: snapPhoto) {
@@ -77,6 +94,15 @@ struct IdentifyYourPlant: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(.horizontal)
         .background(Color("Card5"))
+        
+        .sheet(isPresented: $isShowingImagePicker, onDismiss: {
+            if let img = pickedImage {
+                classifier.classify(img)
+                
+            }
+        }) {
+            ImagePicker(sourceType: pickerSource, selectedImage: $pickedImage)
+        }
     }
 }
 
