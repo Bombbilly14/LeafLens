@@ -23,3 +23,5 @@ xcuserdata/
 /build
 .DS_Store
 DerivedData/
+PlantClassifier.mlproj/*
+!LeafLens/Models/*.mlmodel
