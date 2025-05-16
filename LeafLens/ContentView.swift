@@ -14,6 +14,19 @@ struct ContentView: View {
     @EnvironmentObject var auth: AuthService
     @State var showSplash = true
     @State var authRoute: AuthRoute = .none
+    
+    init() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor(named: "BackgroundGreenApp") ?? UIColor.systemGreen // or use UIColor(hex:)
+        
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+    }
+        
 
     var body: some View {
         ZStack {
