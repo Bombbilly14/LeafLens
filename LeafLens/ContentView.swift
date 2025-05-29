@@ -18,7 +18,7 @@ struct ContentView: View {
     init() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor(named: "BackgroundGreenApp") ?? UIColor.systemGreen // or use UIColor(hex:)
+        appearance.backgroundColor = UIColor(named: "BackgroundGreenApp") ?? UIColor.systemGreen
         
         appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]

@@ -7,21 +7,28 @@
 
 import SwiftUI
 
+
+enum ActivePicker: Identifiable {
+  case camera, library
+  var id: Int { hashValue }
+}
+
+
 struct IdentifyYourPlant: View {
-    
+    @State private var activePicker: ActivePicker? = nil
     @StateObject private var classifier = PlantIdentifier()
     @State private var pickedImage: UIImage?
     @State private var isShowingImagePicker: Bool = false
-    @State private var pickerSource: ImagePicker.SourceType = .photoLibrary
-    
+    @State private var pickerSource: UIImagePickerController.SourceType = .photoLibrary
+
     private func snapPhoto() {
         print("snap a photo presssed")
-        pickerSource = .camera
+        activePicker = .camera
         isShowingImagePicker = true
     }
     private func uploadImage() {
         print("uploadImage presssed")
-        pickerSource = .photoLibrary
+        activePicker = .library
         isShowingImagePicker = true
     }
     
@@ -95,14 +102,16 @@ struct IdentifyYourPlant: View {
         .padding(.horizontal)
         .background(Color("Card5"))
         
-        .sheet(isPresented: $isShowingImagePicker, onDismiss: {
-            if let img = pickedImage {
-                classifier.classify(img)
-                
+        .sheet(item: $activePicker, onDismiss: {
+              if let img = pickedImage { classifier.classify(img) }
+            }) { picker in
+              switch picker {
+              case .camera:
+                ImagePicker(sourceType: .camera, selectedImage: $pickedImage)
+              case .library:
+                ImagePicker(sourceType: .photoLibrary, selectedImage: $pickedImage)
+              }
             }
-        }) {
-            ImagePicker(sourceType: pickerSource, selectedImage: $pickedImage)
-        }
     }
 }
 
