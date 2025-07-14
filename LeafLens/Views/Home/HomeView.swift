@@ -13,22 +13,18 @@ struct HomeView: View {
     @EnvironmentObject var auth: AuthService
     @Binding var path: NavigationPath
     var body: some View {
-        VStack {
-            
-            VStack {
-                HStack{
-                    Text("main buttons here")
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                
-            }
-            
+        ScrollView(.vertical, showsIndicators: false) {
+            FunZone()
             HStack {
-                Text("Tasks and reminders")
+                Text("Reminders")
                     .font(.system(size: 20, weight: .bold))
-                    .foregroundColor(Color("BackgroundGreenApp"))
+//                    .foregroundColor(Color("BackgroundGreenApp"))
             }
             .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.top)
+            VStack() {
+                PlantTaskRemindersCard()
+            }
             VStack {
                 HStack {
                     Text("Commonly snapped plants")
@@ -50,24 +46,29 @@ struct HomeView: View {
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding(.horizontal)
+        .padding()
         .background(Color("Card5")) // or card 2?
-        .ignoresSafeArea()
         .toolbar {
             ToolbarItem(placement: .principal) {
                 HStack() {
-                    Text("Home")
-                        .font(.title)
-                        .bold()
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    VStack() {
+                        Text("Hello, GreenGoddess!")
+                            .font(.system(size: 20))
+                            .bold()
+                            .foregroundColor(.black)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Text("3 tasks, 1 overdue")
+                            .font(.system(size: 14))
+                            .foregroundColor(.gray)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
                     Spacer()
-                    Button("Nav", systemImage: "person.crop.circle", action: {
+                    Button("Nav", systemImage: "bell", action: {
                         print("nav to profile")
                     })
                     .labelStyle(.iconOnly)
-                    .foregroundColor(.white)
-                    .font(.system(size: 25))
+                    .foregroundColor(.black)
+                    .font(.system(size: 18))
 //                    Image(systemName: "person.crop.circle")
 //                        .foregroundColor(.white)
 //                        .font(.system(size: 25))
