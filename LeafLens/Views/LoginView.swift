@@ -249,7 +249,7 @@ struct LoginCardView: View {
                                     .padding(.vertical)
                                }
                     }
-                    .padding(.bottom, 20)
+                    .padding(.bottom, 40)
                     HStack {
                         Button("login me") {
                             Task {
@@ -279,7 +279,7 @@ struct LoginCardView: View {
             }
             .padding()
             .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height * 0.7)
-            .background(Color("Card2"))
+            .background(Color("Card5"))
             .cornerRadius(40)
         }
         .ignoresSafeArea(.container)

@@ -29,7 +29,7 @@ struct SignupView: View {
             VStack {
                 Spacer()
                 LoginLogoView()
-                VStack(spacing: 10) {
+                VStack(spacing: 5) {
                     Spacer()
                     VStack(alignment: .leading, spacing: 5) {
                         Text("Sign up")
@@ -41,8 +41,7 @@ struct SignupView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)
                     .padding(.vertical, 25)
-                    .padding(.top, 20)
-                    VStack(spacing: 20) {
+                    VStack(spacing: 15) {
                         HStack(spacing: 0) {
                             Image(systemName: "person.crop.circle.fill")
                                 .resizable()
