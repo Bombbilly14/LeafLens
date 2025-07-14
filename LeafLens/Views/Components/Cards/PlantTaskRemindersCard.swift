@@ -12,7 +12,7 @@ struct PlantTaskRemindersCard: View {
     @State private var waterToggle: Bool = false
     var tasks = 1
     var nickname: String = "Green Herbert"
-    var genusName: String = "Alocasia infinitum"
+    var genusName: String = "Alocasia infinitumss"
     var plantSection: String = "Kitchen"
     @State var isExpanded: Bool = false
     var body: some View {
