@@ -16,37 +16,38 @@ struct HomeView: View {
         ScrollView(.vertical, showsIndicators: false) {
             FunZone()
             HStack {
-                Text("Reminders")
-                    .font(.system(size: 20, weight: .bold))
+                Text("Today's Tasks")
+                    .font(.system(size: 20))
 //                    .foregroundColor(Color("BackgroundGreenApp"))
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.top)
+            .padding(.top, 32)
             VStack() {
                 PlantTaskRemindersCard()
             }
-            VStack {
-                HStack {
-                    Text("Commonly snapped plants")
-                        .font(.system(size: 20, weight: .bold))
-                        .foregroundColor(Color("BackgroundGreenApp"))
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 20){
-                        PlantCard(title: "Prayer Plant", desc: "some genus or species", image: "plantBackground")
-                        PlantCard(title: "Prayer Plant", desc: "some genus or species", image: "plantBackground", nickname: "my love")
-                        PlantCard(title: "Prayer Plant", desc: "some genus or species", image: "plantBackground", nickname: "my love")
-                    }
-                    .padding()
-                }
-                .frame(maxWidth: .infinity)
-                .padding(.horizontal, -16)
-            }
+//            VStack {
+//                HStack {
+//                    Text("Commonly snapped plants")
+//                        .font(.system(size: 20, weight: .bold))
+//                        .foregroundColor(Color("BackgroundGreenApp"))
+//                }
+//                .frame(maxWidth: .infinity, alignment: .leading)
+//                ScrollView(.horizontal, showsIndicators: false) {
+//                    HStack(spacing: 20){
+//                        PlantCard(title: "Prayer Plant", desc: "some genus or species", image: "plantBackground")
+//                        PlantCard(title: "Prayer Plant", desc: "some genus or species", image: "plantBackground", nickname: "my love")
+//                        PlantCard(title: "Prayer Plant", desc: "some genus or species", image: "plantBackground", nickname: "my love")
+//                    }
+//                    .padding()
+//                }
+//                .frame(maxWidth: .infinity)
+//                .padding(.horizontal, -16)
+//            }
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding()
+        .padding(.bottom)
+        .padding(.horizontal)
         .background(Color("Card5")) // or card 2?
         .toolbar {
             ToolbarItem(placement: .principal) {
@@ -63,12 +64,21 @@ struct HomeView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     Spacer()
-                    Button("Nav", systemImage: "bell", action: {
-                        print("nav to profile")
-                    })
-                    .labelStyle(.iconOnly)
-                    .foregroundColor(.black)
-                    .font(.system(size: 18))
+                    Button(action: {}){
+                        Image(systemName: "bell")
+                            .foregroundStyle(Color("BackgroundGreenApp"))
+                            .font(.system(size: 18))
+                            .padding(10)
+                            .background(Color.white)
+                            .clipShape(Circle())
+
+                    }
+//                    Button("Nav", systemImage: "bell", action: {
+//                        print("nav to profile")
+//                    })
+//                    .labelStyle(.iconOnly)
+//                    .foregroundColor(.black)
+//                    .font(.system(size: 18))
 //                    Image(systemName: "person.crop.circle")
 //                        .foregroundColor(.white)
 //                        .font(.system(size: 25))

@@ -13,7 +13,8 @@ enum FunCardType: CaseIterable {
     case shareFeature
 }
 struct FunZone: View {
-    let shuffledCards = FunCardType.allCases.shuffled()
+    let shuffledCards = FunCardType.allCases
+    //let shuffledCards = FunCardType.allCases.shuffled()
     @State private var selectedIndex = 0
     var body: some View {
         VStack(spacing: 5) {
@@ -21,16 +22,14 @@ struct FunZone: View {
                 ForEach(shuffledCards.indices, id: \.self) {index in
                     VStack {
                         FunZoneCards(type: shuffledCards[index])
-//                        Spacer()
                     }
-                    .frame(maxWidth: .infinity, maxHeight: 150, alignment: .top)
                     .tag(index)
                     .padding(.trailing, 5)
                 }
             }
-            .frame(height: 150)
+            .frame(height: 200, alignment: .bottom)
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-            .padding(.top, 0)
+            .padding(.vertical, 0)
             
             HStack(spacing: 2) {
                 ForEach(shuffledCards.indices, id: \.self) {index in
@@ -42,7 +41,7 @@ struct FunZone: View {
                 }
             }
         }
-        .frame(maxHeight: 300)
+//        .frame(maxHeight: 230, alignment: .bottom)
     }
 }
 
@@ -50,94 +49,136 @@ struct FunZoneCards: View {
     let type: FunCardType
 
     var body: some View {
-        VStack(alignment: .leading) {
+        ZStack(alignment: .bottom) {
             switch type {
                 
             case .subscribe:
-                Text("Subscribe today for additional features1")
-                    .font(.system(size: 16))
-                    .foregroundColor(.white)
-                    .bold()
-                HStack {
-                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor quam id massa faucibus dignissim. Nulla eget metus id nisl malesuada condimentum.")
-                        .foregroundColor(.white)
-                        .font(.system(size: 14))
-                    Spacer()
-                    Button(action: {}) {
-                        Text("Learn More")
-                            .font(.system(size: 12))
+                ZStack(alignment: .bottom) {
+                    VStack(alignment: .leading, spacing: 25){
+                        Text("Care for your plant like a pro")
+                            .font(.system(size: 18))
                             .foregroundColor(.white)
                             .bold()
-                            .padding(10)
-                            .background(Color("BackgroundGreenApp"))
-                            .cornerRadius(25)
+                            .frame(width: 180, alignment: .topLeading)
+                            .lineSpacing(5)
+                            .padding(.leading)
+//                            .padding(.top, 5)
+//                        Spacer()
+                        Button(action: {}) {
+                            Text("Learn more!")
+                                .font(.system(size: 14))
+                                .foregroundColor(Color("BackgroundGreenApp"))
+                                .bold()
+                                .frame(width: 100, height: 12)
+                                .padding()
+                                .background(.white)
+                                .cornerRadius(25)
+                        }
+
+                        .shadow(color: .backgroundGreenApp.opacity(0.4), radius: 6, x: 5, y: 5)
+                        .padding(.leading)
+                        .padding(.bottom, 5)
+
+                        
+                        
                     }
+                    .padding()
+                    
+                    .frame(maxWidth: .infinity, maxHeight: 175, alignment: .leading)
+                    .background(Color("TestAccentColor3"))
+                    .cornerRadius(20)
+//                    .padding(.horizontal)
+                    
+                    Image("snakePlantNoBg")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 200)
+                        .offset(x: 85, y: 0)
+                    
                 }
+
+                
             case .funFact:
-                Text("Subscribe today for additional features2")
-                    .font(.system(size: 16))
-                    .foregroundColor(.white)
-                    .bold()
-                HStack {
-                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor quam id massa faucibus dignissim. Nulla eget metus id nisl malesuada condimentum.")
+                
+                VStack(alignment: .leading) {
+                    Text("Subscribe today for additional features2")
+                        .font(.system(size: 16))
                         .foregroundColor(.white)
-                        .font(.system(size: 14))
-                    Spacer()
-                    Button(action: {}) {
-                        Text("Learn More")
-                            .font(.system(size: 12))
+                        .bold()
+                    HStack {
+                        Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor quam id massa faucibus dignissim. Nulla eget metus id nisl malesuada condimentum.")
                             .foregroundColor(.white)
-                            .bold()
-                            .padding(10)
-                            .background(Color("BackgroundGreenApp"))
-                            .cornerRadius(25)
+                            .font(.system(size: 14))
+                        Spacer()
+                        Button(action: {}) {
+                            Text("Learn More")
+                                .font(.system(size: 12))
+                                .foregroundColor(.white)
+                                .bold()
+                                .padding(10)
+                                .background(Color("BackgroundGreenApp"))
+                                .cornerRadius(25)
+                        }
                     }
                 }
+                .padding()
+                .background(Color("TestAccentColor3"))
+                .cornerRadius(10)
             case .plantTip:
-                Text("Subscribe today for additional features3")
-                    .font(.system(size: 16))
-                    .foregroundColor(.white)
-                    .bold()
-                HStack {
-                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor quam id massa faucibus dignissim. Nulla eget metus id nisl malesuada condimentum.")
+                VStack(alignment: .leading) {
+                    Text("Subscribe today for additional features2")
+                        .font(.system(size: 16))
                         .foregroundColor(.white)
-                        .font(.system(size: 14))
-                    Spacer()
-                    Button(action: {}) {
-                        Text("Learn More")
-                            .font(.system(size: 12))
+                        .bold()
+                    HStack {
+                        Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor quam id massa faucibus dignissim. Nulla eget metus id nisl malesuada condimentum.")
                             .foregroundColor(.white)
-                            .bold()
-                            .padding(10)
-                            .background(Color("BackgroundGreenApp"))
-                            .cornerRadius(25)
+                            .font(.system(size: 14))
+                        Spacer()
+                        Button(action: {}) {
+                            Text("Learn More")
+                                .font(.system(size: 12))
+                                .foregroundColor(.white)
+                                .bold()
+                                .padding(10)
+                                .background(Color("BackgroundGreenApp"))
+                                .cornerRadius(25)
+                        }
                     }
                 }
+                .padding()
+                .background(Color("TestAccentColor3"))
+                .cornerRadius(10)
             case .shareFeature:
-                Text("Subscribe today for additional features4")
-                    .font(.system(size: 16))
-                    .foregroundColor(.white)
-                    .bold()
-                HStack {
-                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor quam id massa faucibus dignissim. Nulla eget metus id nisl malesuada condimentum.")
+                VStack(alignment: .leading) {
+                    Text("Subscribe today for additional features2")
+                        .font(.system(size: 16))
                         .foregroundColor(.white)
-                        .font(.system(size: 14))
-                    Spacer()
-                    Button(action: {}) {
-                        Text("Learn More")
-                            .font(.system(size: 12))
+                        .bold()
+                    HStack {
+                        Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor quam id massa faucibus dignissim. Nulla eget metus id nisl malesuada condimentum.")
                             .foregroundColor(.white)
-                            .bold()
-                            .padding(10)
-                            .background(Color("BackgroundGreenApp"))
-                            .cornerRadius(25)
+                            .font(.system(size: 14))
+                        Spacer()
+                        Button(action: {}) {
+                            Text("Learn More")
+                                .font(.system(size: 12))
+                                .foregroundColor(.white)
+                                .bold()
+                                .padding(10)
+                                .background(Color("BackgroundGreenApp"))
+                                .cornerRadius(25)
+                        }
                     }
                 }
+                .padding()
+                .background(Color("TestAccentColor3"))
+                .cornerRadius(10)
             }
         }
-        .padding()
-        .background(Color("TestAccentColor3"))
-        .cornerRadius(10)
+//        .background(
+//            LinearGradient(gradient: Gradient(colors: [Color("BackgroundGreenApp"), Color("GradientGreenBright")]), startPoint: .topLeading, endPoint: .bottomTrailing)
+//        )
     }
 }
 
