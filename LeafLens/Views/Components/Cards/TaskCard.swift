@@ -36,16 +36,17 @@ struct TaskCard: View {
             Image(taskType.imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .cornerRadius(15)
-                .padding(5)
-            VStack(alignment: .leading, spacing: 15){
+                .frame(width: 55, height: 55)
+                .cornerRadius(50)
+                .padding(0)
+            VStack(alignment: .leading, spacing: 3){
                 Text(date)
-                    .foregroundColor(.white)
+                    .foregroundColor(.gray)
                     .font(.system(size: 12))
                 
                 Text(taskType.title)
-                    .bold()
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
+                    .font(.system(size: 15))
             }
             Spacer()
             Toggle("", isOn: $isCompleted )
@@ -53,7 +54,7 @@ struct TaskCard: View {
                 .padding(.trailing)
         }
         .frame(maxWidth: .infinity, maxHeight: 80)
-        .background(Color("TestAccentColor3"))
+        .background(Color(.white))
         .cornerRadius(15)
 //        .padding()
     }
@@ -71,7 +72,7 @@ struct CheckboxStyles: ToggleStyle {
                     
                 } else {
                     RoundedRectangle(cornerRadius: 4)
-                        .stroke(Color.white, lineWidth: 1)
+                        .stroke(Color.black, lineWidth: 1)
                         .background(Color.clear)
                         .frame(width: 20, height: 20)
                 }
@@ -80,7 +81,7 @@ struct CheckboxStyles: ToggleStyle {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 12, height: 12)
-                        .foregroundColor(Color.white)
+                        .foregroundColor(Color.black)
                 }
                 
             }
