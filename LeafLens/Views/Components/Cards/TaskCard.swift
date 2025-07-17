@@ -32,7 +32,7 @@ struct TaskCard: View {
     let date: String
     
     var body: some View {
-        HStack(spacing: 20) {
+        HStack(spacing: 30) {
             Image(taskType.imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
@@ -81,7 +81,7 @@ struct CheckboxStyles: ToggleStyle {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 12, height: 12)
-                        .foregroundColor(Color.black)
+                        .foregroundColor(Color.white)
                 }
                 
             }

@@ -57,7 +57,7 @@ struct IdentifyYourPlant: View {
             HStack {
                 Button(action: snapPhoto) {
                     Label("Take Photo", systemImage: "camera")
-                    
+                        .font(.system(size: 16, weight: .semibold))
                 }
                 .frame(maxWidth: .infinity, minHeight: 50)
                 .padding(.horizontal)
@@ -68,11 +68,11 @@ struct IdentifyYourPlant: View {
                 
                 Button(action: uploadImage) {
                     Label("Upload Image", systemImage: "photo")
-                    
+                        .font(.system(size: 16, weight: .semibold))
                 }
                 .frame(maxWidth: .infinity, minHeight: 50)
                 .padding(.horizontal)
-                .background(Color("SecondaryButtons"))
+                .background(Color("SecondaryButtons1"))
                 .cornerRadius(15)
                 .foregroundColor(.black)
                 .shadow(color: Color.black.opacity(0.15), radius: 6, x: 0, y: 2)

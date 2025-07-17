@@ -28,7 +28,7 @@ struct BottomNavBar: View {
             .frame(height: tabBarHeight)
             .padding(.vertical, 16)
             .background(
-                Color("BackgroundGreenApp")
+                Color("TestAccentColor3")
                     .clipShape(Capsule())
                     .shadow(color: Color.black.opacity(0.3),
                             radius: 5, x: 0, y: 4)
@@ -43,15 +43,15 @@ struct BottomNavBar: View {
                 ZStack {
                     if selectedTab == .identify {
                         Circle()
-                            .fill(selectedTab == .identify ? Color("TestAccentColor3") : Color(.white))
+                            .fill(selectedTab == .identify ? Color("BackgroundGreenApp") : Color(.white))
                             .matchedGeometryEffect(id: "tabHighlight", in: highlightNamespace)
                             .shadow(color: Color.black.opacity(0.04), radius: 8, x: 0, y: 0)
                             .shadow(color: Color.black.opacity(0.4), radius: 2, x: 0, y: 4)
                     } else {
                         Circle()
                             .fill(Color(.white))
-                            .shadow(color: Color.black.opacity(0.3),
-                                        radius: 4, x: 0, y: 4)
+                            .shadow(color: Color.black.opacity(0.2),
+                                        radius: 3, x: 0, y: 4)
                     }
                     
                     Image("LeafLensLogoVector2")
@@ -82,7 +82,7 @@ struct BottomNavBar: View {
                     .frame(height: 24)
                 if selectedTab != tab {
                     Text(label)
-                        .font(.system(size: 12, weight: .medium))
+                        .font(.system(size: 12, weight: .semibold))
                 }
             }
             
@@ -99,20 +99,19 @@ struct BottomNavBar: View {
                 ZStack {
                   if selectedTab == tab {
                     Circle()
-                      .fill(Color("TestAccentColor3"))
+                      .fill(Color("BackgroundGreenApp"))
                       .matchedGeometryEffect(id: "tabHighlight", in: highlightNamespace)
-                      .shadow(color: Color.black.opacity(0.04), radius: 8, x: 0, y: 4)
-                      .shadow(color: Color.black.opacity(0.4), radius: 2, x: 0, y: 4)
+                      .shadow(color: Color.black.opacity(0.3), radius: 2, x: 0, y: 4)
                   }
                 }
                     .offset(y: selectedTab == tab ? -20 : 0)
               )
-            .shadow(radius: selectedTab == tab ? 12 : 0)
+            .shadow(radius: selectedTab == tab ? 5 : 0)
     }
 }
 
 #Preview {
-    BottomNavBar(selectedTab: .constant(.identify))
+    BottomNavBar(selectedTab: .constant(.home))
 }
 
 // camera corner lines

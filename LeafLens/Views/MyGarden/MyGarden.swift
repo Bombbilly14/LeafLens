@@ -9,49 +9,15 @@ import SwiftUI
 struct MyGarden: View {
     @EnvironmentObject var auth: AuthService
     @Binding var path: NavigationPath
-    var placeholderCount: Int = 0
+    var placeholderCount: Int = 1
     
     @State var error: Error?
     var body: some View {
         VStack {
             if placeholderCount > 0 {
-                // search?
-                // daily care reminder
-                // my plants
-                // upcoming care schedule
-                VStack {
-                    HStack {
-                        Text("Todays Schedule")
-                            .bold()
-                        Spacer()
-                        HStack {
-                            Text("See all")
-                            Image(systemName: "arrow.right")
-                        }
-                    }
-                }
-                
-                VStack {
-                    HStack {
-                        Text("My Plants")
-                            .bold()
-                        Spacer()
-                        HStack {
-                            Text("See all")
-                            Image(systemName: "arrow.right")
-                        }
-                    }
-                }
-                VStack {
-                    HStack {
-                        Text("Upcoming Care Schedule")
-                            .bold()
-                        Spacer()
-                        HStack {
-                            Text("See all")
-                            Image(systemName: "arrow.right")
-                        }
-                    }
+                VStack(spacing: 0) {
+                    ShelfRow()
+
                 }
             } else {
                 noPlantsYetView()
@@ -59,16 +25,15 @@ struct MyGarden: View {
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding(.horizontal)
         .background(Color("Card5")) // or card 2?
         .ignoresSafeArea()
         .toolbar {
             ToolbarItem(placement: .principal) {
-                HStack {
+                HStack(alignment: .top) {
                     Text("My Garden")
-                        .font(.title)
+                        .font(.system(size: 20))
                         .bold()
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }

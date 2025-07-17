@@ -14,39 +14,38 @@ struct PlantCard: View {
     var nickname: String?
     
     var body: some View {
-        HStack(spacing: 20) {
+        VStack(spacing: 0) {
             if image != nil {
                 Image(image!)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 100, height: 100)
-                    .cornerRadius(15)
+                    .frame(width: 150, height: 100)
                     .clipped()
             }
-            VStack {
+            VStack(alignment: .leading, spacing: 5) {
                 Text(title + ((nickname ?? "").isEmpty ? "" : " (\(nickname!))"))
-                    .font(.system(size: 15))
-                    .frame(maxWidth: 175, maxHeight: 75, alignment: .top)
-                Spacer()
+                    .font(.system(size: 12))
+                    .foregroundStyle(Color("BackgroundGreenApp"))
+                    .bold()
                 Text(desc)
-                    .font(.subheadline)
+                    .font(.system(size: 10))
+                    .foregroundStyle(Color.gray)
                 
             }
-            Image(systemName: "chevron.right")
-                .padding(.leading)
-                .foregroundColor(.gray)
+            .padding(.vertical)
+            .padding(.horizontal, 10)
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .padding()
-        .frame(width: 350, height: 125)
+        .frame(width: 150, height: 175, alignment: .top)
         .background(Color("Card2"))
         .mask {
             RoundedRectangle(cornerRadius: 15, style: .continuous)
         }
-        .shadow(color: .black.opacity(0.15), radius: 2, x: 2, y: 3)
+        .shadow(color: .black.opacity(0.2), radius: 7, x: 6, y: 6)
 
     }
 }
 
 #Preview {
-    PlantCard(title: "Prayer Plant", desc: "Geooartubnasdfsadf", image: "plantBackground", nickname: "nickname")
+    PlantCard(title: "Prayer Plant", desc: "Geooartubnasdfsadf", image: "plantBackground")
 }

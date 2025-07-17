@@ -36,7 +36,7 @@ struct GenusHeader: View {
                     .multilineTextAlignment(.leading)
                     .lineLimit(nil)
                     .fixedSize(horizontal: false, vertical: true)
-                    .padding(.top, 30)
+                    .padding(.top, 32)
                     .frame(maxWidth: .infinity)
                 HStack {
                     //plant.genus
@@ -61,7 +61,7 @@ struct GenusHeader: View {
                     .foregroundColor(.testAccentColor5)
                 
             }
-            .padding(.bottom, 100)
+            .padding(.bottom, 75)
             .padding(.trailing, 10)
             .padding(.leading, -10)
         }
