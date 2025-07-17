@@ -15,6 +15,8 @@ struct HomeView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             FunZone()
+                .padding(.horizontal)
+
             HStack {
                 Text("Today's Tasks")
                     .font(.system(size: 20))
@@ -22,9 +24,18 @@ struct HomeView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.top, 32)
-            VStack() {
-                PlantTaskRemindersCard()
+            .padding(.horizontal)
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 10) {
+                    PlantTaskRemindersCard()
+                    PlantTaskRemindersCard()
+                    PlantTaskRemindersCard()
+                }
+                .padding(.vertical)
+                .padding(.leading)
             }
+            
 //            VStack {
 //                HStack {
 //                    Text("Commonly snapped plants")
@@ -47,7 +58,6 @@ struct HomeView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(.bottom)
-        .padding(.horizontal)
         .background(Color("Card5")) // or card 2?
         .toolbar {
             ToolbarItem(placement: .principal) {

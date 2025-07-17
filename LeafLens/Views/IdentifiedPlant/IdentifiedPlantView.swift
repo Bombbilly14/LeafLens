@@ -22,6 +22,7 @@ struct IdentifiedPlantView: View {
                 VStack(spacing: 0) {
                     VStack {
                         GenusHeader()
+                            .padding(.top)
                         QuickInfoCard()
                         QuickInfoCard2()
                         InfoPaneCard()

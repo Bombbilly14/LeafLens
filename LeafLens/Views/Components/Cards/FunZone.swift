@@ -30,6 +30,7 @@ struct FunZone: View {
             .frame(height: 200, alignment: .bottom)
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             .padding(.vertical, 0)
+//            .shadow(color: Color.black.opacity(0.05), radius: 3, x: 0, y: 3)
             
             HStack(spacing: 2) {
                 ForEach(shuffledCards.indices, id: \.self) {index in
@@ -41,7 +42,6 @@ struct FunZone: View {
                 }
             }
         }
-//        .frame(maxHeight: 230, alignment: .bottom)
     }
 }
 
@@ -55,26 +55,21 @@ struct FunZoneCards: View {
             case .subscribe:
                 ZStack(alignment: .bottom) {
                     VStack(alignment: .leading, spacing: 25){
-                        Text("Care for your plant like a pro")
+                        Text("More shelves, better care. LeafLens+")
                             .font(.system(size: 18))
-                            .foregroundColor(.white)
-                            .bold()
+                            .foregroundColor(.black)
                             .frame(width: 180, alignment: .topLeading)
-                            .lineSpacing(5)
+                            .lineSpacing(9)
                             .padding(.leading)
-//                            .padding(.top, 5)
-//                        Spacer()
                         Button(action: {}) {
                             Text("Learn more!")
-                                .font(.system(size: 14))
-                                .foregroundColor(Color("BackgroundGreenApp"))
-                                .bold()
+                                .font(.system(size: 14, weight: .semibold))
+                                .foregroundColor(Color.white)
                                 .frame(width: 100, height: 12)
                                 .padding()
-                                .background(.white)
+                                .background(Color("BackgroundGreenApp"))
                                 .cornerRadius(25)
                         }
-
                         .shadow(color: .backgroundGreenApp.opacity(0.4), radius: 6, x: 5, y: 5)
                         .padding(.leading)
                         .padding(.bottom, 5)
@@ -85,9 +80,19 @@ struct FunZoneCards: View {
                     .padding()
                     
                     .frame(maxWidth: .infinity, maxHeight: 175, alignment: .leading)
-                    .background(Color("TestAccentColor3"))
+                    .background(
+                        LinearGradient(
+                            gradient: Gradient(colors: [
+                                Color("GradientSoftGreen"),
+                                Color("GradientSoftYellow")
+                            ]),
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+
+                    )
                     .cornerRadius(20)
-//                    .padding(.horizontal)
+
                     
                     Image("snakePlantNoBg")
                         .resizable()
@@ -176,9 +181,6 @@ struct FunZoneCards: View {
                 .cornerRadius(10)
             }
         }
-//        .background(
-//            LinearGradient(gradient: Gradient(colors: [Color("BackgroundGreenApp"), Color("GradientGreenBright")]), startPoint: .topLeading, endPoint: .bottomTrailing)
-//        )
     }
 }
 
