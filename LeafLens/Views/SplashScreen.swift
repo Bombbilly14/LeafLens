@@ -81,7 +81,7 @@ struct SplashScreen: View {
                                 .frame(width: 150, height: 18)
                                 .padding()
                                 .foregroundColor(Color(.white))
-                                .background(Color("BackgroundGreenApp"))
+                                .background(Color("PrimaryGreen"))
                                 .cornerRadius(25)
                                 .padding(.trailing, 20)
                             

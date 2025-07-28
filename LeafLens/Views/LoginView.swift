@@ -82,13 +82,13 @@ struct LoginCardView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 18, height: 18)
-                            .foregroundColor(Color("BackgroundGreenApp"))
+                            .foregroundColor(Color("PrimaryGreen"))
                         TextField(text: $email) {
                             Text("Email")
                                 .bold()
                                 .font(.system(size: 14))
                             
-                                .foregroundColor(Color("BackgroundGreenApp"))
+                                .foregroundColor(Color("PrimaryGreen"))
                         }
                         .keyboardType(.emailAddress)
                         .textInputAutocapitalization(.never)
@@ -105,7 +105,7 @@ struct LoginCardView: View {
                     .frame(maxHeight: 50)
                     .overlay(
                         RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color("BackgroundGreenApp"), lineWidth: 1))
+                            .stroke(Color("PrimaryGreen"), lineWidth: 1))
                     .onTapGesture {
                         isFocused = .email
                     }
@@ -117,12 +117,12 @@ struct LoginCardView: View {
                         .resizable()
                             .scaledToFit()
                             .frame(width: 18, height: 18)
-                        .foregroundColor(Color("BackgroundGreenApp"))
+                        .foregroundColor(Color("PrimaryGreen"))
                     SecureField(text: $password) {
                         Text("Password")
                             .bold()
                             .font(.system(size: 14))
-                            .foregroundColor(Color("BackgroundGreenApp"))
+                            .foregroundColor(Color("PrimaryGreen"))
                     }
                         .padding(.leading, 10)
                         .frame(maxHeight: 50)
@@ -134,7 +134,7 @@ struct LoginCardView: View {
                 .frame(maxHeight: 50)
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color("BackgroundGreenApp"), lineWidth: 1)
+                        .stroke(Color("PrimaryGreen"), lineWidth: 1)
                         )
                 .onTapGesture {
                     isFocused = .password
@@ -149,7 +149,7 @@ struct LoginCardView: View {
                         Text("Forgot Password")
                             .padding(.horizontal)
                         
-                            .foregroundColor(Color("BackgroundGreenApp"))
+                            .foregroundColor(Color("PrimaryGreen"))
                             .font(.system(size: 14))
                     }
                     .padding(.vertical, 10)
@@ -174,7 +174,7 @@ struct LoginCardView: View {
                         .bold()
                         .foregroundColor(Color(.white))
                         .background(
-                            Color("BackgroundGreenApp")
+                            Color("PrimaryGreen")
                             
                         )
                         .cornerRadius(25)
@@ -236,12 +236,12 @@ struct LoginCardView: View {
                                    Text("Sign up")
                                     .overlay(
                                         Rectangle()
-                                            .fill(Color("BackgroundGreenApp"))
+                                            .fill(Color("PrimaryGreen"))
                                             .frame(width: 50, height: 1)
                                             .offset(y: 2)
                                         , alignment: .bottom
                                     )
-                                    .foregroundColor(Color("BackgroundGreenApp"))
+                                    .foregroundColor(Color("PrimaryGreen"))
                                     .font(.system(size: 14))
 //                                    .bold()
                                     
@@ -268,7 +268,7 @@ struct LoginCardView: View {
                         
                         .padding()
                         .foregroundColor(.white)
-                        .background(Color("SecondaryButtons"))
+                        .background(Color("SecondaryYellow"))
                         .cornerRadius(10)
                         .padding(.horizontal, 40)
                     }

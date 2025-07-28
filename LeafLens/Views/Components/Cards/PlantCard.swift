@@ -25,7 +25,7 @@ struct PlantCard: View {
             VStack(alignment: .leading, spacing: 5) {
                 Text(title + ((nickname ?? "").isEmpty ? "" : " (\(nickname!))"))
                     .font(.system(size: 12))
-                    .foregroundStyle(Color("BackgroundGreenApp"))
+                    .foregroundStyle(Color("PrimaryGreen"))
                     .bold()
                 Text(desc)
                     .font(.system(size: 10))
@@ -37,7 +37,7 @@ struct PlantCard: View {
             .frame(maxWidth: .infinity, alignment: .leading)
         }
         .frame(width: 150, height: 175, alignment: .top)
-        .background(Color("Card2"))
+        .background(Color.white)
         .mask {
             RoundedRectangle(cornerRadius: 15, style: .continuous)
         }

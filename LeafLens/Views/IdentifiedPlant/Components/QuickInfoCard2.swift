@@ -20,7 +20,7 @@ struct QuickInfoCard2: View {
                         .shadow(color: .black.opacity(0.2), radius: 4, x: 2, y: 4)
                     Text("Toxicity")
                         .font(.system(size: 14))
-                        .foregroundColor(Color("SecondaryButtons1"))
+                        .foregroundColor(Color("SecondaryYellow"))
                         .bold()
                 }
 
@@ -41,7 +41,7 @@ struct QuickInfoCard2: View {
                 VStack(alignment: .leading, spacing: 5) {
                     Text("Difficulty")
                         .font(.system(size: 14))
-                        .foregroundColor(Color("SecondaryButtons"))
+                        .foregroundColor(Color("SecondaryYellow"))
                     Text("Easy")
                         .font(.system(size: 12))
                         .foregroundColor(.white)
@@ -59,7 +59,7 @@ struct QuickInfoCard2: View {
                 VStack(alignment: .leading, spacing: 5) {
                     Text("Soil Type")
                         .font(.system(size: 14))
-                        .foregroundColor(Color("SecondaryButtons"))
+                        .foregroundColor(Color("SecondaryYellow"))
                     Text("Peat, well-draining")
                         .font(.system(size: 12))
                         .foregroundColor(.white)

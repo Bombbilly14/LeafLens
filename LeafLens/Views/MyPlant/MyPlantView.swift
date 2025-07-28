@@ -13,7 +13,7 @@ struct MyPlantView: View {
             Color("Card5")
                 .ignoresSafeArea()
             CurvedBackground()
-                .fill(Color("BackgroundGreenApp"))
+                .fill(Color("PrimaryGreen"))
                 .ignoresSafeArea()
             
             VStack() {
@@ -111,7 +111,7 @@ struct MyPlantView: View {
 //                    .padding(.top)
                     InfoPaneCard()
                         .frame(maxWidth: .infinity)
-                        .padding()
+                        .padding(.horizontal, 8)
 //                        .background(Color.white)
                         .cornerRadius(20)
                 }

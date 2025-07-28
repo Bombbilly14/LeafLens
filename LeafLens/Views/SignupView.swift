@@ -47,13 +47,13 @@ struct SignupView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 18, height: 18)
-                                .foregroundColor(Color("BackgroundGreenApp"))
+                                .foregroundColor(Color("PrimaryGreen"))
                             TextField(text: $email) {
                                 Text("Email")
                                     .bold()
                                     .font(.system(size: 14))
                                 
-                                    .foregroundColor(Color("BackgroundGreenApp"))
+                                    .foregroundColor(Color("PrimaryGreen"))
                             }
                             .keyboardType(.emailAddress)
                             .textInputAutocapitalization(.never)
@@ -70,7 +70,7 @@ struct SignupView: View {
                         .frame(maxHeight: 50)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color("BackgroundGreenApp"), lineWidth: 1))
+                                .stroke(Color("PrimaryGreen"), lineWidth: 1))
                         .onTapGesture {
                             isFocused = .email
                         }
@@ -81,12 +81,12 @@ struct SignupView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 18, height: 18)
-                                .foregroundColor(Color("BackgroundGreenApp"))
+                                .foregroundColor(Color("PrimaryGreen"))
                             SecureField(text: $password) {
                                 Text("Password")
                                     .bold()
                                     .font(.system(size: 14))
-                                    .foregroundColor(Color("BackgroundGreenApp"))
+                                    .foregroundColor(Color("PrimaryGreen"))
                             }
                             .padding(.leading, 10)
                             .frame(maxHeight: 50)
@@ -97,7 +97,7 @@ struct SignupView: View {
                         .frame(maxHeight: 50)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color("BackgroundGreenApp"), lineWidth: 1)
+                                .stroke(Color("PrimaryGreen"), lineWidth: 1)
                         )
                         .onTapGesture {
                             isFocused = .password
@@ -109,12 +109,12 @@ struct SignupView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 18, height: 18)
-                                .foregroundColor(Color("BackgroundGreenApp"))
+                                .foregroundColor(Color("PrimaryGreen"))
                             SecureField(text: $password) {
                                 Text("Confirm Password")
                                     .bold()
                                     .font(.system(size: 14))
-                                    .foregroundColor(Color("BackgroundGreenApp"))
+                                    .foregroundColor(Color("PrimaryGreen"))
                             }
                             .padding(.leading, 10)
                             .frame(maxHeight: 50)
@@ -125,7 +125,7 @@ struct SignupView: View {
                         .frame(maxHeight: 50)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color("BackgroundGreenApp"), lineWidth: 1)
+                                .stroke(Color("PrimaryGreen"), lineWidth: 1)
                         )
                         .onTapGesture {
                             isFocused = .confirmPassword
@@ -153,7 +153,7 @@ struct SignupView: View {
                             .bold()
                             .foregroundColor(Color(.white))
                             .background(
-                                Color("BackgroundGreenApp")
+                                Color("PrimaryGreen")
                                 
                             )
                             .cornerRadius(25)
@@ -213,12 +213,12 @@ struct SignupView: View {
                                 Text("Log in")
                                     .overlay(
                                         Rectangle()
-                                            .fill(Color("BackgroundGreenApp"))
+                                            .fill(Color("PrimaryGreen"))
                                             .frame(width: 50, height: 1)
                                             .offset(y: 2)
                                         , alignment: .bottom
                                     )
-                                    .foregroundColor(Color("BackgroundGreenApp"))
+                                    .foregroundColor(Color("PrimaryGreen"))
                                     .font(.system(size: 14))
                                     .padding(.vertical)
                             }
@@ -230,7 +230,7 @@ struct SignupView: View {
                 }
                 .padding()
                 .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height * 0.7)
-                .background(Color("Card2"))
+                .background(Color("Card5"))
                 .cornerRadius(40)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -247,112 +247,6 @@ struct SignupView: View {
             .ignoresSafeArea()
         }
     }
-        
-    
-//    var body: some View {
-//        VStack {
-//            LoginLogoView()
-//            
-//            
-//            VStack {
-//                Text("Sign Up")
-//                    .font(.title)
-//                    .bold()
-//                
-//                HStack {
-//                    TextField("Email", text: $email)
-//                        .keyboardType(.emailAddress)
-//                        .textInputAutocapitalization(.never)
-//                        .focused($isFocused, equals: .email)
-//                        .textFieldStyle(.roundedBorder)
-//
-//                    
-//                }
-//                .padding(.vertical, 10)
-//                .contentShape(Rectangle())
-//                .onTapGesture {
-//                    isFocused = .email
-//                }
-//                
-//                HStack {
-//                    SecureField("Password", text: $password)
-//                        .textFieldStyle(.roundedBorder)
-//                        .focused($isFocused, equals: .password)
-//                    
-//                }
-//                .padding(.vertical, 10)
-//                .contentShape(Rectangle())
-//                .onTapGesture {
-//                    isFocused = .password
-//                }
-//                
-//                HStack {
-//                    SecureField("Confirm Password", text: $confirmPassword)
-//                        .textFieldStyle(.roundedBorder)
-//                        .focused($isFocused, equals: .confirmPassword)
-//                    
-//                }
-//                .padding(.vertical, 10)
-//                .contentShape(Rectangle())
-//                .onTapGesture {
-//                    isFocused = .confirmPassword
-//                }
-//                //TODO: make toast show each outcome
-//                Button(action: {
-//                    print("sign up \(email),")
-//                    guard !email.isEmpty, !password.isEmpty, !confirmPassword.isEmpty, password == confirmPassword else {
-//                        print("passwords do not match")
-//                        self.showToast = true
-//                        return
-//                    }
-//                    Task {
-//                        do {
-//                            try await auth.signUp(email: email, password: password)
-//                            print("signed up")
-//                        } catch {
-//                            print("error, \(error)")
-//                            self.error = error
-//                        }
-//                    }
-//                    
-//                }) {
-//                    Text("Sign Up")
-//                        .frame(maxWidth: .infinity)
-//                        .padding()
-//                        .foregroundColor(.white)
-//                        .background(.green)
-//                        .cornerRadius(10)
-//                    
-//                    
-//                }
-//            }
-//            .padding()
-//            .frame(maxWidth: 350)
-//            .background(Color(.systemBackground))
-//            .cornerRadius(20)
-//            .shadow(radius: 5)
-//            .padding()
-//            HStack {
-//                Text("Already have an account?")
-//                Button("Log in") {
-//                    dismiss()
-//                }
-//            }
-//        }
-//        .frame(maxWidth: .infinity, maxHeight: .infinity)
-//        .background(
-//            Color(.secondarySystemBackground)
-//                .ignoresSafeArea()
-//                .dismissKeyboardOnTap()
-//        )
-//        .showToast(
-//            isPresented: $showToast,
-//            message: "Email and password must not be empty!",
-//            backgroundColor: .red,
-//            textColor: .white,
-//            duration: 3
-//        )
-//    }
 
 }
 #Preview {

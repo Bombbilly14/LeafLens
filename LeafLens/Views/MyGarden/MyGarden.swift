@@ -71,7 +71,7 @@ struct noPlantsYetView: View {
                 
                 .frame(maxWidth: .infinity, minHeight: 35)
                 .padding(.horizontal)
-                .background(Color("BackgroundGreenApp"))
+                .background(Color("PrimaryGreen"))
                 .cornerRadius(15)
                 .foregroundColor(.white)
                 .shadow(color: Color.black.opacity(0.15), radius: 6, x: 0, y: 2)
@@ -80,7 +80,7 @@ struct noPlantsYetView: View {
         .padding()
         .frame(width: 300, height: 300)
         .background(RoundedRectangle(cornerRadius: 16)
-             .fill(Color("Card2"))
+             .fill(Color("Card5"))
              .shadow(color: Color.white.opacity(0.4),
                 radius: 6, x: -4, y: -4)
              .shadow(color: Color.black.opacity(0.15),

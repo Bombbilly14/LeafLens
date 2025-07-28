@@ -14,7 +14,24 @@ struct AppRouter: View {
     @State private var myGardenPath = NavigationPath()
     @State private var settingsPath = NavigationPath()
     @State private var placeholderPath = NavigationPath()
+    @State private var identifyPath = NavigationPath()
+    @State private var calendarPath = NavigationPath()
     
+    private var showBottomNav: Bool {
+        switch selectedTab {
+        case .home:
+            return homePath.isEmpty
+        case .settings:
+            return settingsPath.isEmpty
+            
+        case .identify:
+            return identifyPath.isEmpty
+        case .myGarden:
+            return myGardenPath.isEmpty
+        case .calendar:
+            return calendarPath.isEmpty
+        }
+    }
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -41,7 +58,7 @@ struct AppRouter: View {
                     
                 case .calendar:
                     NavigationStack {
-                        PlaceholderView()
+                        CalendarView()
                     }
                 case .identify:
                     NavigationStack {
@@ -57,7 +74,8 @@ struct AppRouter: View {
                                 case .profile:
                                     ProfileView()
                                 case .manageAccount:
-                                    PlaceholderView()
+                                    ManageAccount()
+                                    
                                 }
                             }
                             .toolbar(settingsPath.isEmpty ? .visible : .hidden, for: .tabBar)
@@ -67,7 +85,10 @@ struct AppRouter: View {
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            BottomNavBar(selectedTab: $selectedTab)
+            if showBottomNav {
+                BottomNavBar(selectedTab: $selectedTab)
+                
+            }
         }
         .ignoresSafeArea(.keyboard, edges: .bottom)
     }

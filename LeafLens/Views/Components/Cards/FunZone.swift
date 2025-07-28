@@ -67,10 +67,10 @@ struct FunZoneCards: View {
                                 .foregroundColor(Color.white)
                                 .frame(width: 100, height: 12)
                                 .padding()
-                                .background(Color("BackgroundGreenApp"))
+                                .background(Color("PrimaryGreen"))
                                 .cornerRadius(25)
                         }
-                        .shadow(color: .backgroundGreenApp.opacity(0.4), radius: 6, x: 5, y: 5)
+                        .shadow(color: .primaryGreen.opacity(0.4), radius: 6, x: 5, y: 5)
                         .padding(.leading)
                         .padding(.bottom, 5)
 
@@ -121,7 +121,7 @@ struct FunZoneCards: View {
                                 .foregroundColor(.white)
                                 .bold()
                                 .padding(10)
-                                .background(Color("BackgroundGreenApp"))
+                                .background(Color("PrimaryGreen"))
                                 .cornerRadius(25)
                         }
                     }
@@ -146,7 +146,7 @@ struct FunZoneCards: View {
                                 .foregroundColor(.white)
                                 .bold()
                                 .padding(10)
-                                .background(Color("BackgroundGreenApp"))
+                                .background(Color("PrimaryGreen"))
                                 .cornerRadius(25)
                         }
                     }
@@ -171,7 +171,7 @@ struct FunZoneCards: View {
                                 .foregroundColor(.white)
                                 .bold()
                                 .padding(10)
-                                .background(Color("BackgroundGreenApp"))
+                                .background(Color("PrimaryGreen"))
                                 .cornerRadius(25)
                         }
                     }
