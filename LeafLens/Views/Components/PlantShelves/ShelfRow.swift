@@ -16,7 +16,7 @@ struct ShelfRow: View {
                 Spacer()
                 Text("Edit")
                     .font(.system(size: 12))
-                    .foregroundStyle(Color("BackgroundGreenApp"))
+                    .foregroundStyle(Color("PrimaryGreen"))
             }
             .padding()
             ScrollView(.horizontal, showsIndicators: false) {

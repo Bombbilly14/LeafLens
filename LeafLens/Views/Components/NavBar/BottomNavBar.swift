@@ -43,7 +43,7 @@ struct BottomNavBar: View {
                 ZStack {
                     if selectedTab == .identify {
                         Circle()
-                            .fill(selectedTab == .identify ? Color("BackgroundGreenApp") : Color(.white))
+                            .fill(selectedTab == .identify ? Color("PrimaryGreen") : Color(.white))
                             .matchedGeometryEffect(id: "tabHighlight", in: highlightNamespace)
                             .shadow(color: Color.black.opacity(0.04), radius: 8, x: 0, y: 0)
                             .shadow(color: Color.black.opacity(0.4), radius: 2, x: 0, y: 4)
@@ -59,11 +59,11 @@ struct BottomNavBar: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 40, height: 40)
                         .font(.system(size: 20, weight: .bold))
-                        .foregroundColor(selectedTab == .identify ? Color(.white) : Color("BackgroundGreenApp"))
+                        .foregroundColor(selectedTab == .identify ? Color(.white) : Color("PrimaryGreen"))
                         .frame(width: isSelected() ? 65 : 50, height: isSelected() ? 65 : 50)
                     
                     CornerLines(length: 11)
-                        .stroke(selectedTab == .identify ? .white : Color("BackgroundGreenApp"), lineWidth: 2)
+                        .stroke(selectedTab == .identify ? .white : Color("PrimaryGreen"), lineWidth: 2)
                         .frame(width: 50, height: 50)
                         .drawingGroup()
                 }
@@ -99,7 +99,7 @@ struct BottomNavBar: View {
                 ZStack {
                   if selectedTab == tab {
                     Circle()
-                      .fill(Color("BackgroundGreenApp"))
+                      .fill(Color("PrimaryGreen"))
                       .matchedGeometryEffect(id: "tabHighlight", in: highlightNamespace)
                       .shadow(color: Color.black.opacity(0.3), radius: 2, x: 0, y: 4)
                   }

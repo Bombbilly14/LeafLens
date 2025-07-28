@@ -91,7 +91,7 @@ struct PlantTaskRemindersCard: View {
                 .frame(width: 100, height: 50)
                 .background(
                     RoundedRectangle(cornerRadius: 25)
-                        .fill(Color("SecondaryButtons1"))
+                        .fill(Color("SecondaryYellow"))
                 )
                 .disabled(!isExpanded)
                 .opacity(isExpanded ? 1.0 : 0.5)
@@ -105,7 +105,7 @@ struct PlantTaskRemindersCard: View {
                 .frame(width: 100, height: 50)
                 .background(
                     RoundedRectangle(cornerRadius: 25)
-                        .fill(Color("BackgroundGreenApp"))
+                        .fill(Color("PrimaryGreen"))
                 )
                 .disabled(!isExpanded)
                 .opacity(isExpanded ? 1.0 : 0.5)

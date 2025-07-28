@@ -20,7 +20,7 @@ struct HomeView: View {
             HStack {
                 Text("Today's Tasks")
                     .font(.system(size: 20))
-//                    .foregroundColor(Color("BackgroundGreenApp"))
+//                    .foregroundColor(Color("PrimaryGreen"))
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.top, 32)
@@ -40,7 +40,7 @@ struct HomeView: View {
 //                HStack {
 //                    Text("Commonly snapped plants")
 //                        .font(.system(size: 20, weight: .bold))
-//                        .foregroundColor(Color("BackgroundGreenApp"))
+//                        .foregroundColor(Color("PrimaryGreen"))
 //                }
 //                .frame(maxWidth: .infinity, alignment: .leading)
 //                ScrollView(.horizontal, showsIndicators: false) {
@@ -76,7 +76,7 @@ struct HomeView: View {
                     Spacer()
                     Button(action: {}){
                         Image(systemName: "bell")
-                            .foregroundStyle(Color("BackgroundGreenApp"))
+                            .foregroundStyle(Color("PrimaryGreen"))
                             .font(.system(size: 18))
                             .padding(10)
                             .background(Color.white)
@@ -133,7 +133,7 @@ struct HomeView: View {
 //                
 //                .frame(maxWidth: .infinity, minHeight: 35)
 //                .padding(.horizontal)
-//                .background(Color("BackgroundGreenApp"))
+//                .background(Color("PrimaryGreen"))
 //                .cornerRadius(15)
 //                .foregroundColor(.white)
 //                .shadow(color: Color.black.opacity(0.15), radius: 6, x: 0, y: 2)
@@ -142,7 +142,7 @@ struct HomeView: View {
 //        .padding()
 //        .frame(width: 300, height: 300)
 //        .background(RoundedRectangle(cornerRadius: 16)
-//             .fill(Color("Card2"))
+//             .fill(Color("Card5"))
 //             .shadow(color: Color.white.opacity(0.4),
 //                radius: 6, x: -4, y: -4)
 //             .shadow(color: Color.black.opacity(0.15),

@@ -14,12 +14,12 @@ struct QuickInfoCard: View {
                 HStack(spacing: 3) {
                     Image(systemName: "sun.max.fill")
                         .font(.system(size: 30))
-                        .foregroundColor(.backgroundGreenApp)
+                        .foregroundColor(.primaryGreen)
                     VStack(alignment: .leading, spacing: 5) {
                         Text("Lighting")
                             .font(.system(size: 14))
                             .bold()
-                            .foregroundColor(Color("BackgroundGreenApp"))
+                            .foregroundColor(Color("PrimaryGreen"))
                         //plant.light
                         Text("Bright, indirect")
                             .font(.system(size: 12))
@@ -28,12 +28,12 @@ struct QuickInfoCard: View {
                 HStack(spacing: 3) {
                     Image(systemName: "humidity.fill")
                         .font(.system(size: 25))
-                        .foregroundColor(.backgroundGreenApp)
+                        .foregroundColor(.primaryGreen)
                     VStack(alignment: .leading, spacing: 5) {
                         Text("Humidity")
                             .font(.system(size: 14))
                             .bold()
-                            .foregroundColor(.backgroundGreenApp)
+                            .foregroundColor(.primaryGreen)
                         //plant.humidity
                         Text("50-70%")
                             .font(.system(size: 12))
@@ -42,12 +42,12 @@ struct QuickInfoCard: View {
                 HStack(spacing: 3){
                     Image(systemName: "thermometer")
                         .font(.system(size: 30))
-                        .foregroundColor(.backgroundGreenApp)
+                        .foregroundColor(.primaryGreen)
                     VStack(alignment: .leading, spacing: 5) {
                         Text("Temperature")
                             .font(.system(size: 14))
                             .bold()
-                            .foregroundColor(.backgroundGreenApp)
+                            .foregroundColor(.primaryGreen)
                         // plant.temp
                         Text("60-80°F")
                             .font(.system(size: 12))
@@ -58,12 +58,12 @@ struct QuickInfoCard: View {
                 HStack(spacing: 3){
                     Image(systemName: "drop.halffull")
                         .font(.system(size: 30))
-                        .foregroundColor(.backgroundGreenApp)
+                        .foregroundColor(.primaryGreen)
                     VStack(alignment: .leading, spacing: 5) {
                         Text("Water Amount")
                             .font(.system(size: 14))
                             .bold()
-                            .foregroundColor(.backgroundGreenApp)
+                            .foregroundColor(.primaryGreen)
                         Text("Heavy")
                             .font(.system(size: 12))
                     }
@@ -71,12 +71,12 @@ struct QuickInfoCard: View {
                 HStack(spacing: 3) {
                     Image(systemName: "calendar")
                         .font(.system(size: 30))
-                        .foregroundColor(.backgroundGreenApp)
+                        .foregroundColor(.primaryGreen)
                     VStack(alignment: .leading, spacing: 5) {
                         Text("Water Freq.")
                             .font(.system(size: 14))
                             .bold()
-                            .foregroundColor(.backgroundGreenApp)
+                            .foregroundColor(.primaryGreen)
                         Text("1/week")
                             .font(.system(size: 12))
                     }
@@ -87,7 +87,7 @@ struct QuickInfoCard: View {
             
         .padding()
         
-        .background(Color("Card2"))
+        .background(Color.white)
         .cornerRadius(20)
         .padding(.bottom)
     }

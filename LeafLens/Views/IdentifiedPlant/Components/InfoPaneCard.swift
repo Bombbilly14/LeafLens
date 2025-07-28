@@ -14,45 +14,45 @@ struct InfoPaneCard: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            HStack(spacing: 15){
+            HStack(spacing: 20){
                 Group {
                     Button(action: {
                         infoPane = .general
                     }) {
                         Text("About")
-                            .font(.system(size: infoPane == .general ? 20 : 16))
+                            .font(.system(size: infoPane == .general ? 18 : 16))
                             .fontWeight(infoPane == .general ? .bold : .regular)
-                            .foregroundColor(Color("BackgroundGreenApp"))
+                            .foregroundColor(Color("PrimaryGreen"))
                     }
                     Text("|")
-                        .foregroundColor(Color("BackgroundGreenApp"))
+                        .foregroundColor(Color("PrimaryGreen"))
                     Button(action: {
                         infoPane = .watering
                     }) {
                         Text("Watering")
-                            .font(.system(size: infoPane == .watering ? 20 : 16))
+                            .font(.system(size: infoPane == .watering ? 18 : 16))
                             .fontWeight(infoPane == .watering ? .bold : .regular)
-                            .foregroundColor(Color("BackgroundGreenApp"))
+                            .foregroundColor(Color("PrimaryGreen"))
                     }
                     Text("|")
-                        .foregroundColor(Color("BackgroundGreenApp"))
+                        .foregroundColor(Color("PrimaryGreen"))
                     Button(action: {
                         infoPane = .soil
                     }) {
                         Text("Soil")
-                            .font(.system(size: infoPane == .soil ? 20 : 16))
+                            .font(.system(size: infoPane == .soil ? 18 : 16))
                             .fontWeight(infoPane == .soil ? .bold : .regular)
-                            .foregroundColor(Color("BackgroundGreenApp"))
+                            .foregroundColor(Color("PrimaryGreen"))
                     }
                 Text("|")
-                    .foregroundColor(Color("BackgroundGreenApp"))
+                    .foregroundColor(Color("PrimaryGreen"))
                 Button(action: {
                     infoPane = .tips
                 }) {
                     Text("Tips")
-                        .font(.system(size: infoPane == .tips ? 20 : 16))
+                        .font(.system(size: infoPane == .tips ? 18 : 16))
                         .fontWeight(infoPane == .tips ? .bold : .regular)
-                        .foregroundColor(Color("BackgroundGreenApp"))
+                        .foregroundColor(Color("PrimaryGreen"))
                 }
             }
         }
@@ -78,10 +78,15 @@ struct InfoPaneCard: View {
             
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-//        .padding()
+        .padding()
+        .background(Color.white)
+        
+        .cornerRadius(20)
     }
 }
 
 #Preview {
     InfoPaneCard()
+        .padding()
+        .background(Color("Card5"))
 }

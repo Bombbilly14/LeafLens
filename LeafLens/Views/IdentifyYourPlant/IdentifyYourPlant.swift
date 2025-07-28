@@ -39,7 +39,7 @@ struct IdentifyYourPlant: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 75, height: 75)
-                .foregroundColor(Color("BackgroundGreenApp"))
+                .foregroundColor(Color("PrimaryGreen"))
             
             Text("Let's identify your plant!")
                 .font(.title)
@@ -61,7 +61,7 @@ struct IdentifyYourPlant: View {
                 }
                 .frame(maxWidth: .infinity, minHeight: 50)
                 .padding(.horizontal)
-                .background(Color("BackgroundGreenApp"))
+                .background(Color("PrimaryGreen"))
                 .cornerRadius(15)
                 .foregroundColor(.white)
                 .shadow(color: Color.black.opacity(0.15), radius: 6, x: 0, y: 2)
@@ -72,7 +72,7 @@ struct IdentifyYourPlant: View {
                 }
                 .frame(maxWidth: .infinity, minHeight: 50)
                 .padding(.horizontal)
-                .background(Color("SecondaryButtons1"))
+                .background(Color("SecondaryYellow"))
                 .cornerRadius(15)
                 .foregroundColor(.black)
                 .shadow(color: Color.black.opacity(0.15), radius: 6, x: 0, y: 2)

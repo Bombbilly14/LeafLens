@@ -15,7 +15,7 @@ struct IdentifiedPlantView: View {
             Color("Card5")
                 .ignoresSafeArea()
             CurvedBackground()
-                .fill(Color("BackgroundGreenApp"))
+                .fill(Color("PrimaryGreen"))
                 .ignoresSafeArea()
                 
             GeometryReader { geo in
@@ -24,9 +24,14 @@ struct IdentifiedPlantView: View {
                         GenusHeader()
                             .padding(.top)
                         QuickInfoCard()
+                        // idk maybe
+//                            .shadow(color: .black.opacity(0.1), radius: 4, x: 3, y: 3)
+
                         QuickInfoCard2()
                         InfoPaneCard()
-                            .padding()
+                            .padding(.horizontal, 8)
+                            .shadow(color: .black.opacity(0.1), radius: 6, x: 3, y: 3)
+
                     }
 //                    Spacer()
                     VStack(spacing: 35) {
@@ -37,13 +42,13 @@ struct IdentifiedPlantView: View {
                                 .frame(maxWidth: .infinity, minHeight: 50)
                                 .font(.system(size: 15, weight: .bold))
                                 .foregroundColor(.white)
-                                .background(Color("BackgroundGreenApp"))
+                                .background(Color("PrimaryGreen"))
                                 .cornerRadius(25)
                                 .shadow(color: .black.opacity(0.4), radius: 4, x: 0, y: 4)
                         }
                         
                         Text("Report inaccuracy")
-                            .foregroundColor(.blue)
+                            .foregroundColor(Color("TestAccentColor3"))
                             .font(.system(size: 14))
                     }
                     .padding(.horizontal)
@@ -90,8 +95,8 @@ struct HalfRadial: View {
                             (isLeft
                                 ? (i >= segments - filled)
                                 : (i < filled))
-                            ? Color("BackgroundGreenApp")
-                            : Color("BackgroundGreenApp").opacity(0.2),
+                            ? Color("PrimaryGreen")
+                            : Color("PrimaryGreen").opacity(0.2),
                             lineWidth: 10
                         )
                     }
@@ -128,9 +133,9 @@ struct HalfRadial: View {
 //    var body: some View {
 //        ZStack {
 //            // background rings
-//            Circle().stroke(Color.backgroundGreenApp.opacity(0.2), lineWidth: 12)
+//            Circle().stroke(Color.primaryGreen.opacity(0.2), lineWidth: 12)
 //            Circle()
-//                .stroke(Color.backgroundGreenApp.opacity(0.2), lineWidth: 6)
+//                .stroke(Color.primaryGreen.opacity(0.2), lineWidth: 6)
 //                .padding(8)
 //
 //            // filled arcs
@@ -140,7 +145,7 @@ struct HalfRadial: View {
 //                .rotationEffect(.degrees(-90))
 //            Circle()
 //                .trim(from: 0, to: CGFloat(min(daysBetween/maxDays, 1)))
-//                .stroke(Color.backgroundGreenApp, style: StrokeStyle(lineWidth: 6, lineCap: .round))
+//                .stroke(Color.primaryGreen, style: StrokeStyle(lineWidth: 6, lineCap: .round))
 //                .rotationEffect(.degrees(-90))
 //                .padding(8)
 //

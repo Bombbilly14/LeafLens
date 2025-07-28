@@ -67,7 +67,7 @@ struct CheckboxStyles: ToggleStyle {
             ZStack {
                 if configuration.isOn {
                     RoundedRectangle(cornerRadius: 4)
-                        .fill(Color("BackgroundGreenApp"))
+                        .fill(Color("PrimaryGreen"))
                         .frame(width: 20, height: 20)
                     
                 } else {
