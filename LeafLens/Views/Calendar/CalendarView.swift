@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Task: Identifiable {
+struct TaskModel: Identifiable {
     let id = UUID()
     let plantName: String
     let taskType: String
@@ -192,18 +192,18 @@ struct CalendarView: View {
         Calendar.current.isDate(date, inSameDayAs: Date())
     }
     
-    private var placeholderTasks: [Task] {
+    private var placeholderTasks: [TaskModel] {
             [
-                Task(plantName: "Monstera Deliciosa", taskType: "Water", date: Date()),
-                Task(plantName: "Peace Lily", taskType: "Mist Leaves", date: Calendar.current.date(byAdding: .hour, value: 1, to: Date())!),
-                Task(plantName: "ZZ Plant", taskType: "Fertilize", date: Calendar.current.date(byAdding: .hour, value: 3, to: Date())!),
-                Task(plantName: "Orchid", taskType: "Repot", date: Calendar.current.date(byAdding: .day, value: 1, to: Date())!),
-                Task(plantName: "Spider Plant", taskType: "Prune Brown Tips", date: Calendar.current.date(byAdding: .hour, value: 2, to: Date())!)
+                TaskModel(plantName: "Monstera Deliciosa", taskType: "Water", date: Date()),
+                TaskModel(plantName: "Peace Lily", taskType: "Mist Leaves", date: Calendar.current.date(byAdding: .hour, value: 1, to: Date())!),
+                TaskModel(plantName: "ZZ Plant", taskType: "Fertilize", date: Calendar.current.date(byAdding: .hour, value: 3, to: Date())!),
+                TaskModel(plantName: "Orchid", taskType: "Repot", date: Calendar.current.date(byAdding: .day, value: 1, to: Date())!),
+                TaskModel(plantName: "Spider Plant", taskType: "Prune Brown Tips", date: Calendar.current.date(byAdding: .hour, value: 2, to: Date())!)
             ]
         }
     
     struct TimelineTaskView: View {
-        let task: Task
+        let task: TaskModel
         var body: some View {
             VStack(alignment: .leading, spacing: 0.8) {
                 HStack {
