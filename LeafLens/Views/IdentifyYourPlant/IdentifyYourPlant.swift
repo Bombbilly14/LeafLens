@@ -55,6 +55,17 @@ struct IdentifyYourPlant: View {
                             }
             
             HStack {
+                Button(action: uploadImage) {
+                    Label("Upload Image", systemImage: "photo")
+                        .font(.system(size: 16, weight: .semibold))
+                }
+                .frame(maxWidth: .infinity, minHeight: 50)
+                .padding(.horizontal)
+                .background(Color("SecondaryYellow"))
+                .cornerRadius(15)
+                .foregroundColor(.black)
+                .shadow(color: Color.black.opacity(0.15), radius: 6, x: 0, y: 2)
+                
                 Button(action: snapPhoto) {
                     Label("Take Photo", systemImage: "camera")
                         .font(.system(size: 16, weight: .semibold))
@@ -66,16 +77,6 @@ struct IdentifyYourPlant: View {
                 .foregroundColor(.white)
                 .shadow(color: Color.black.opacity(0.15), radius: 6, x: 0, y: 2)
                 
-                Button(action: uploadImage) {
-                    Label("Upload Image", systemImage: "photo")
-                        .font(.system(size: 16, weight: .semibold))
-                }
-                .frame(maxWidth: .infinity, minHeight: 50)
-                .padding(.horizontal)
-                .background(Color("SecondaryYellow"))
-                .cornerRadius(15)
-                .foregroundColor(.black)
-                .shadow(color: Color.black.opacity(0.15), radius: 6, x: 0, y: 2)
             }
             Text("Tips for best results")
             VStack(alignment: .leading, spacing: 5) {
