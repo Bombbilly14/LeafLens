@@ -56,33 +56,13 @@ struct CalendarView: View {
             VStack {
                 VStack(spacing: 16) {
                     HStack {
-                        //                        Button(action: {
-                        //                            withAnimation {
-                        //                                currentDate = Calendar.current.date(byAdding: .month, value: -1, to: currentDate) ?? currentDate
-                        //                            }
-                        //                        }) {
-                        //                            Image(systemName: "chevron.left")
-                        //                                .foregroundStyle(Color.white)
-                        //
-                        //                                .font(.title2)
-                        //                        }
-                        //                        Spacer()
+                        //TODO: add button to select month
                         Text(monthYearFormat.string(from: currentDate))
                             .font(.title)
                             .foregroundStyle(Color.white)
                             .padding(.leading)
                             .bold()
                         Spacer()
-                        //                        Button(action: {
-                        //                            withAnimation {
-                        //                                currentDate = Calendar.current.date(byAdding: .month, value: 1, to: currentDate) ?? currentDate
-                        //                            }
-                        //                        }) {
-                        //                            Image(systemName: "chevron.right")
-                        //                                .font(.title2)
-                        //                                .foregroundStyle(Color.white)
-                        //
-                        //                        }
                     }
                     .padding()
                     .padding(.vertical)
@@ -108,7 +88,7 @@ struct CalendarView: View {
                             if let date = date {
                                 let day = Calendar.current.component(.day, from: date)
                                 Text("\(day)")
-                                    .frame(maxWidth: .infinity, minHeight: 50)
+                                    .frame(maxWidth: .infinity, minHeight: 45)
                                     .foregroundStyle(Color.white)
                                     .bold()
                                 
@@ -127,35 +107,44 @@ struct CalendarView: View {
                     Spacer()
                 }
                 
-                .frame(height: geometry.size.height * 0.6)
+                .frame(height: geometry.size.height * 0.55)
                 //TODO: idk about this height, check during build
-                
-                VStack(alignment: .leading) {
-                    HStack() {
-                        Text("\(formattedDate(selectedDate))")
-                            .font(.headline)
-                        Spacer()
-                    }
-                    
-                    Divider()
-                    if hasPlaceholderTask(on: selectedDate) {
-                        ScrollView(.vertical, showsIndicators: true){
-                            VStack(alignment: .leading, spacing: 8) {
-                                ForEach(placeholderTasks) { task in
-                                    TimelineTaskView(task: task)
-                                }
+                ZStack(alignment: .bottomTrailing) {
+                    VStack(alignment: .leading) {
+                        HStack() {
+                            Text("\(formattedDate(selectedDate))")
+                                .font(.headline)
+                            Spacer()
+                            Button(action: {
+                                //TODO: navigate or pull up a page that lets them add a task for any of their plants on that specified day
+                                print("add reminder pushed")
+                            }) {
+                                Image(systemName: "plus.circle.fill")
+                                    .font(.system(size: 32))
+                                    .foregroundStyle(Color.primaryGreen)
                             }
-                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                         }
-                    } else {
-                        VStack {
-                            Image(systemName: "tray")
-                                .font(.largeTitle)
-                                .opacity(0.3)
-                            Text("No tasks")
-                                .padding(.bottom, 64)
+                        
+                        Divider()
+                        if hasPlaceholderTask(on: selectedDate) {
+                            ScrollView(.vertical, showsIndicators: true){
+                                VStack(alignment: .leading, spacing: 8) {
+                                    ForEach(placeholderTasks) { task in
+                                        TimelineTaskView(task: task)
+                                    }
+                                }
+                                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                            }
+                        } else {
+                            VStack {
+                                Image(systemName: "tray")
+                                    .font(.largeTitle)
+                                    .opacity(0.3)
+                                Text("No tasks")
+                                    .padding(.bottom, 64)
+                            }
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                         }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -172,7 +161,7 @@ struct CalendarView: View {
     }
     private func calendarCellBackground(date: Date) -> Color {
         if Calendar.current.isDate(date, inSameDayAs: selectedDate) {
-            return Color.primaryGreen.opacity(0.8)
+            return Color.primaryGreen
         } else if Calendar.current.isDate(date, inSameDayAs: Date()) {
             return Color.primaryGreen.opacity(0.5)
         }

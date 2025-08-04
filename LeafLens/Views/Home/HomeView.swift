@@ -77,7 +77,7 @@ struct HomeView: View {
                     Button(action: {}){
                         Image(systemName: "bell")
                             .foregroundStyle(Color("PrimaryGreen"))
-                            .font(.system(size: 18))
+                            .font(.system(size: 16, weight: .semibold))
                             .padding(10)
                             .background(Color.white)
                             .clipShape(Circle())
