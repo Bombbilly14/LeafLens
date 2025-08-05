@@ -250,29 +250,6 @@ struct LoginCardView: View {
                                }
                     }
                     .padding(.bottom, 40)
-                    HStack {
-                        Button("login me") {
-                            Task {
-                                do {
-                                    try await auth.signIn(email: "example@LeafLens.com", password: "testPassword123")
-                                    print("logged in")
-                                } catch {
-                                    print("error, \(error)")
-                                    self.error = error
-                                }
-                            }
-                            
-                        }
-                        .frame(maxWidth: .infinity)
-                        .bold()
-                        
-                        .padding()
-                        .foregroundColor(.white)
-                        .background(Color("SecondaryYellow"))
-                        .cornerRadius(10)
-                        .padding(.horizontal, 40)
-                    }
-                    .padding(.bottom, 100)
                 }
                 .frame(maxWidth: .infinity, alignment: .bottom)
                 
