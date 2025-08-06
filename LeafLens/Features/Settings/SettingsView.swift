@@ -9,7 +9,7 @@ import UIKit
 
 
 struct SettingsView: View {
-    @EnvironmentObject var auth: AuthService
+    @EnvironmentObject var auth: AuthViewModel
     @Binding var path: NavigationPath
     
     @State var notificationToggle = true

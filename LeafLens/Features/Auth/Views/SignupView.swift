@@ -13,7 +13,7 @@ struct SignupView: View {
         case confirmPassword
     }
     
-    @EnvironmentObject var auth: AuthService
+    @EnvironmentObject var auth: AuthViewModel
     @Environment(\.dismiss) private var dismiss
     
     @FocusState private var isFocused: Field?
@@ -110,7 +110,7 @@ struct SignupView: View {
                                 .scaledToFit()
                                 .frame(width: 18, height: 18)
                                 .foregroundColor(Color("PrimaryGreen"))
-                            SecureField(text: $password) {
+                            SecureField(text: $confirmPassword) {
                                 Text("Confirm Password")
                                     .bold()
                                     .font(.system(size: 14))
@@ -140,12 +140,8 @@ struct SignupView: View {
                             return
                         }
                         Task {
-                            do {
-                                try await auth.signUp(email: email, password: password)
-                            } catch {
-                                print("error, \(error)")
-                                self.error = error
-                            }
+                            await auth.signUp(email: email, password: password)
+                           
                         }
                     }) {
                         Text("Sign up")

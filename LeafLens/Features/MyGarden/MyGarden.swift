@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct MyGarden: View {
-    @EnvironmentObject var auth: AuthService
+    @EnvironmentObject var auth: AuthViewModel
     @Binding var path: NavigationPath
     var placeholderCount: Int = 1
     

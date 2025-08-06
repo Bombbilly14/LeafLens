@@ -11,7 +11,7 @@ enum AuthRoute {
     case none, login, signup
 }
 struct ContentView: View {
-    @EnvironmentObject var auth: AuthService
+    @EnvironmentObject var auth: AuthViewModel
     @State var showSplash = true
     @State var authRoute: AuthRoute = .none
     
