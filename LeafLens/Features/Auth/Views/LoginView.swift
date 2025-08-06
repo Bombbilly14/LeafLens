@@ -47,7 +47,7 @@ struct LoginCardView: View {
         case email
         case password
     }
-    @EnvironmentObject var auth: AuthService
+    @EnvironmentObject var auth: AuthViewModel
     
     @Binding var showToast: Bool
     @Binding var path: NavigationPath

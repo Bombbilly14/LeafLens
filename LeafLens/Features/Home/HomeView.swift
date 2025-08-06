@@ -10,7 +10,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject var auth: AuthService
+    @EnvironmentObject var auth: AuthViewModel
     @Binding var path: NavigationPath
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {

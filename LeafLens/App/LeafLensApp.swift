@@ -14,19 +14,21 @@ struct LeafLensApp: App {
       supabaseURL: URL(string: "https://orcmlvodylvfdqawtjof.supabase.co")!,
       supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9yY21sdm9keWx2ZmRxYXd0am9mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU1MjI0ODksImV4cCI6MjA2MTA5ODQ4OX0.w834Zc-5zfo8UP57Ev6-YPNxSgiab6Uvv-S1TChXCSg"
     )
-    @StateObject private var authService: AuthService
+//    @StateObject private var authService: AuthService
     
-    init() {
-        let auth = AuthService(client: supabase)
-        
-        _authService = StateObject(wrappedValue: auth)
-    }
+//    init() {
+//        let auth = AuthService(client: supabase)
+//        
+//        _authService = StateObject(wrappedValue: auth)
+//    }
     
     var body: some Scene {
         WindowGroup {
+            let authService = AuthService(client: supabase)
+            let authViewModel = AuthViewModel(authService: authService)
             ContentView()
-                .environmentObject(authService)
-                .environment(\.font, .custom("Inter-Regular", size: 16))
+                .environmentObject(authViewModel)
+//                .environment(\.font, .custom("Inter-Regular", size: 16))
         }
     }
 }
