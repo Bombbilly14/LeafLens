@@ -160,12 +160,8 @@ struct LoginCardView: View {
                         self.showToast = true
                     } else {
                         Task {
-                            do {
-                                try await auth.signIn(email: email, password: password)
-                            } catch {
-                                print("error, \(error)")
-                                self.error = error
-                            }
+                            await auth.signIn(email: email, password: password)
+                            
                         }
                     }
                 }) {

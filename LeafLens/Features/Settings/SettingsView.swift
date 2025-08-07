@@ -177,7 +177,7 @@ struct SettingsView: View {
                     VStack(spacing: 25) {
                         Button(action: {
                             Task {
-                                try await auth.signOut()
+                                await auth.signOut()
                             }
                         }) {
                             
