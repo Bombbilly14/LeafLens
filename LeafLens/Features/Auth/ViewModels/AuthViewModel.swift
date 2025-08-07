@@ -14,6 +14,7 @@ final class AuthViewModel: ObservableObject {
     @Published var user: User?
     @Published var isLoading: Bool = true
     @Published var isLoggedIn: Bool = false
+    @Published var error: Error? = nil
     
     private let authService: AuthService
     private var authListener: Task<Void, Never>?
@@ -29,7 +30,7 @@ final class AuthViewModel: ObservableObject {
         do {
             try await authService.signUp(email: email, password: password)
         } catch {
-            //
+            // self.error = error
         }
         isLoading = false
         
@@ -41,7 +42,7 @@ final class AuthViewModel: ObservableObject {
         do {
             try await authService.signIn(email: email, password: password)
         } catch {
-            //
+            // self.error = error
         }
         isLoading = false
         
@@ -52,7 +53,7 @@ final class AuthViewModel: ObservableObject {
         do {
             try await authService.signOut()
         } catch {
-            //
+            // self.error = error
         }
     }
     

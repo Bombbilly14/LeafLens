@@ -66,46 +66,46 @@ struct IdentifiedPlantView: View {
     IdentifiedPlantView()
 }
 
-struct HalfRadial: View {
-    let segments: Int
-        let filled: Int
-        let isLeft: Bool
-
-        var body: some View {
-            GeometryReader { geo in
-                ZStack {
-                    // draw all segments
-                    ForEach(0..<segments) { i in
-                        let slice = 180.0 / Double(segments)
-                        let gap   = slice * 0.02
-                        let start = (isLeft ? 180 : 0) + slice * Double(i) + gap/2
-                        let end   = start + slice - gap
-
-                        Path { p in
-                            p.addArc(
-                                center: CGPoint(x: geo.size.width/2, y: geo.size.height/2),
-                                radius: min(geo.size.width, geo.size.height)/2,
-                                startAngle: .degrees(start),
-                                endAngle:   .degrees(end),
-                                clockwise:  false
-                            )
-                        }
-                        .stroke(
-                            // invert fill logic for left side so it fills from the top segment down
-                            (isLeft
-                                ? (i >= segments - filled)
-                                : (i < filled))
-                            ? Color("PrimaryGreen")
-                            : Color("PrimaryGreen").opacity(0.2),
-                            lineWidth: 10
-                        )
-                    }
-                }
-                // rotate the whole half‐circle so it sits vertically
-                .rotationEffect(.degrees(-90))
-            }
-        }
-}
+//struct HalfRadial: View {
+//    let segments: Int
+//        let filled: Int
+//        let isLeft: Bool
+//
+//        var body: some View {
+//            GeometryReader { geo in
+//                ZStack {
+//                    // draw all segments
+//                    ForEach(0..<segments) { i in
+//                        let slice = 180.0 / Double(segments)
+//                        let gap   = slice * 0.02
+//                        let start = (isLeft ? 180 : 0) + slice * Double(i) + gap/2
+//                        let end   = start + slice - gap
+//
+//                        Path { p in
+//                            p.addArc(
+//                                center: CGPoint(x: geo.size.width/2, y: geo.size.height/2),
+//                                radius: min(geo.size.width, geo.size.height)/2,
+//                                startAngle: .degrees(start),
+//                                endAngle:   .degrees(end),
+//                                clockwise:  false
+//                            )
+//                        }
+//                        .stroke(
+//                            // invert fill logic for left side so it fills from the top segment down
+//                            (isLeft
+//                                ? (i >= segments - filled)
+//                                : (i < filled))
+//                            ? Color("PrimaryGreen")
+//                            : Color("PrimaryGreen").opacity(0.2),
+//                            lineWidth: 10
+//                        )
+//                    }
+//                }
+//                // rotate the whole half‐circle so it sits vertically
+//                .rotationEffect(.degrees(-90))
+//            }
+//        }
+//}
 //struct WateringGauge: View {
 //    /// amount: 0…10
 //    let amount: Double
