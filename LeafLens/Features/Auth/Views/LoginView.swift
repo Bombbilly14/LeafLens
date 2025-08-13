@@ -277,7 +277,3 @@ struct LoginLogoView: View {
         }
     }
 }
-
-#Preview {
-    LoginView(path: .constant(NavigationPath()))
-}
