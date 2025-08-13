@@ -5,8 +5,6 @@
 //  Created by William German on 4/24/25.
 //
 
-// login view, sign user in with supabase and navigate home
-
 import SwiftUI
 import _AuthenticationServices_SwiftUI
 

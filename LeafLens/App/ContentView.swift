@@ -46,9 +46,7 @@ struct ContentView: View {
                         authRoute = .signup
                         showSplash = false
                     }
-                )
-//                .environmentObject(auth)
-                
+                )                
             }
         }
     }

@@ -35,7 +35,7 @@ final class CompositionRoot {
 
 
 struct SupabaseConfig {
-    let url: URL
     
+    let url: URL
     let apiKey: String
 }

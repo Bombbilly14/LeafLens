@@ -20,7 +20,6 @@ struct ContentView_Previews: PreviewProvider {
             failing
                 .previewDisplayName("Auth Error")
         }
-//        .previewDevice("iPhone 14 Pro")
     }
 
     private static var loggedOut: some View {
