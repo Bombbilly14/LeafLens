@@ -122,18 +122,3 @@ struct SplashScreen: View {
         }
     }
 }
-
-
-
-
-
-#Preview {
-    SplashScreen(
-        onComplete: {
-        },
-        onLoginPressed: {
-        },
-        onSignupPressed: {
-        }
-    )
-}

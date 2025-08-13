@@ -21,8 +21,6 @@ struct AuthRouter: View {
                         EmptyView()
                     }
                 }
-        }
-//        .font(.custom("Inter-Regular", size: 20))
-        
+        }        
     }
 }
